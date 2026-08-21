@@ -1,0 +1,7 @@
+# Install Vercel CLI (if not installed)
+npm install -g vercel
+
+# Deploy
+vercel --prod
+
+# Follow the prompts

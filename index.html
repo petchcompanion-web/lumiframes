@@ -1,0 +1,2227 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=no"/>
+<meta name="theme-color" content="#0a0612"/>
+<meta name="description" content="LumiFrames Studios - Anime Advertisement Platform with global storage"/>
+<title>LumiFrames Studios — Complete</title>
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🎬</text></svg>"/>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@500;700&family=Cinzel:wght@500;700&display=swap" rel="stylesheet"/>
+<style>
+/* ============ RESET & TOKENS ============ */
+*{margin:0;padding:0;box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+:root{
+  --bg:#07050d;--bg-2:#0e0820;--bg-s:#160b2a;--bg-e:#221340;
+  --p1:#ff2d92;--p2:#a855f7;--p3:#3b82f6;--p4:#06b6d4;--p5:#fbbf24;--p6:#10b981;
+  --g:linear-gradient(135deg,#ff2d92 0%,#a855f7 50%,#3b82f6 100%);
+  --g-soft:linear-gradient(135deg,rgba(255,45,146,.15),rgba(168,85,247,.15),rgba(59,130,246,.15));
+  --t:#f8f5ff;--td:#b6acd2;--tm:#756a96;
+  --b:rgba(168,85,247,.2);--b-hi:rgba(168,85,247,.45);
+  --r:18px;--r-sm:12px;--r-lg:24px;
+  --sh:0 20px 50px rgba(0,0,0,.55);
+  --sh-g:0 0 30px rgba(168,85,247,.35);
+  --ease:cubic-bezier(.16,1,.3,1);
+}
+html{scroll-behavior:smooth}
+body{
+  background:var(--bg);
+  color:var(--t);
+  font-family:Inter,system-ui,sans-serif;
+  min-height:100vh;
+  overflow-x:hidden;
+  position:relative;
+}
+body::before{
+  content:'';position:fixed;inset:-50%;z-index:-2;
+  background:radial-gradient(circle at 20% 30%,rgba(255,45,146,.12),transparent 40%),
+             radial-gradient(circle at 80% 70%,rgba(59,130,246,.12),transparent 40%),
+             radial-gradient(circle at 50% 50%,rgba(168,85,247,.08),transparent 50%);
+  animation:bgp 20s ease-in-out infinite alternate;
+  pointer-events:none;
+}
+body::after{
+  content:'';position:fixed;inset:0;z-index:-1;
+  background-image:
+    linear-gradient(rgba(168,85,247,.04) 1px,transparent 1px),
+    linear-gradient(90deg,rgba(168,85,247,.04) 1px,transparent 1px);
+  background-size:50px 50px;
+  mask-image:radial-gradient(ellipse at center,#000 30%,transparent 80%);
+  -webkit-mask-image:radial-gradient(ellipse at center,#000 30%,transparent 80%);
+  pointer-events:none;
+}
+@keyframes bgp{
+  0%{transform:translate(0,0) rotate(0deg)}
+  100%{transform:translate(-5%,-3%) rotate(3deg)}
+}
+::selection{background:var(--p1);color:#fff}
+::-webkit-scrollbar{width:7px;height:7px}
+::-webkit-scrollbar-track{background:transparent}
+::-webkit-scrollbar-thumb{background:linear-gradient(var(--p2),var(--p1));border-radius:4px}
+::-webkit-scrollbar-thumb:hover{background:linear-gradient(var(--p1),var(--p2))}
+
+/* ============ SPLASH SCREEN ============ */
+#splash{
+  position:fixed;inset:0;z-index:9999;background:#000;
+  display:flex;align-items:center;justify-content:center;
+  overflow:hidden;
+}
+#splash::before{
+  content:'';position:absolute;inset:0;
+  background:radial-gradient(circle at center,rgba(168,85,247,.25),transparent 60%);
+  animation:pulse 2.5s ease-in-out infinite;
+}
+@keyframes pulse{
+  0%,100%{transform:scale(1);opacity:.5}
+  50%{transform:scale(1.2);opacity:.9}
+}
+.sp-c{text-align:center;position:relative;z-index:2}
+.sp-rings{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;z-index:1;pointer-events:none}
+.sp-r{position:absolute;border:2px solid transparent;border-radius:50%;border-top-color:var(--p1);border-right-color:var(--p2)}
+.sp-r:nth-child(1){width:280px;height:280px;animation:rsp 3s linear infinite}
+.sp-r:nth-child(2){width:380px;height:380px;border-top-color:var(--p2);border-right-color:var(--p3);animation:rsp 4.5s linear infinite reverse}
+.sp-r:nth-child(3){width:480px;height:480px;border-top-color:var(--p3);border-right-color:var(--p1);animation:rsp 6s linear infinite}
+@keyframes rsp{to{transform:rotate(360deg)}}
+.sp-l{
+  font-family:Cinzel,serif;font-size:clamp(2.8rem,8vw,5rem);
+  font-weight:700;
+  background:linear-gradient(135deg,#fff 0%,#ff2d92 40%,#a855f7 70%,#3b82f6 100%);
+  background-size:200% 200%;
+  -webkit-background-clip:text;background-clip:text;color:transparent;
+  animation:shimmer 3s linear infinite,fadeUp .8s var(--ease) both;
+  letter-spacing:.02em;
+  filter:drop-shadow(0 0 30px rgba(168,85,247,.5));
+}
+@keyframes shimmer{0%{background-position:0% 50%}100%{background-position:200% 50%}}
+@keyframes fadeUp{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:translateY(0)}}
+.sp-s{
+  font-family:Space Grotesk,sans-serif;letter-spacing:.35em;
+  text-transform:uppercase;color:var(--td);margin:10px 0 24px;
+  font-size:.85rem;font-weight:500;
+  animation:fadeUp .8s var(--ease) .2s both;
+}
+.sp-dots{display:inline-flex;gap:6px;margin-top:8px}
+.sp-dot{width:8px;height:8px;border-radius:50%;background:var(--p1);animation:dot 1.2s ease-in-out infinite}
+.sp-dot:nth-child(2){background:var(--p2);animation-delay:.2s}
+.sp-dot:nth-child(3){background:var(--p3);animation-delay:.4s}
+@keyframes dot{0%,80%,100%{transform:scale(.5);opacity:.3}40%{transform:scale(1);opacity:1}}
+.sp-w{font-size:1rem;animation:fadeUp .8s var(--ease) .4s both;color:var(--td)}
+.sp-w span{background:var(--g);-webkit-background-clip:text;background-clip:text;color:transparent;font-weight:700}
+#splash.hide{animation:so .7s var(--ease) forwards 3.2s}
+@keyframes so{to{opacity:0;visibility:hidden;transform:scale(1.05)}}
+
+/* ============ APP SHELL ============ */
+#app{display:none;opacity:0}
+#app.show{display:block;animation:ai .6s var(--ease) forwards}
+@keyframes ai{from{opacity:0}to{opacity:1}}
+
+/* ============ LOGIN ============ */
+#login{
+  position:fixed;inset:0;z-index:800;background:var(--bg);
+  display:none;align-items:center;justify-content:center;padding:20px;
+  overflow:hidden;
+}
+#login::before{
+  content:'';position:absolute;inset:0;z-index:0;
+  background:radial-gradient(circle at 30% 30%,rgba(255,45,146,.2),transparent 50%),
+             radial-gradient(circle at 70% 70%,rgba(59,130,246,.2),transparent 50%);
+  animation:bgp 15s ease-in-out infinite alternate;
+}
+#login.show{display:flex}
+.lc{
+  background:rgba(22,11,42,.85);
+  backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);
+  border:1px solid var(--b);
+  border-radius:var(--r-lg);
+  padding:40px 32px;
+  width:100%;max-width:400px;
+  box-shadow:var(--sh),var(--sh-g);
+  position:relative;z-index:1;
+  animation:slideUp .6s var(--ease);
+}
+@keyframes slideUp{from{opacity:0;transform:translateY(30px) scale(.95)}to{opacity:1;transform:translateY(0) scale(1)}}
+.lc::before{
+  content:'';position:absolute;top:0;left:0;right:0;height:2px;
+  background:var(--g);border-radius:var(--r-lg) var(--r-lg) 0 0;
+}
+.ll{
+  font-family:Cinzel,serif;font-size:2rem;font-weight:700;text-align:center;
+  background:var(--g);-webkit-background-clip:text;background-clip:text;color:transparent;
+  margin-bottom:4px;
+}
+.lt{text-align:center;color:var(--td);font-size:.78rem;letter-spacing:.18em;text-transform:uppercase;margin-bottom:28px}
+.if{
+  width:100%;background:var(--bg-e);
+  border:1px solid var(--b);border-radius:var(--r-sm);
+  padding:13px 15px;color:var(--t);font:inherit;font-size:.9rem;
+  outline:none;margin-bottom:13px;
+  transition:all .25s var(--ease);
+}
+.if:hover{border-color:var(--b-hi)}
+.if:focus{border-color:var(--p1);box-shadow:0 0 0 3px rgba(255,45,146,.15);background:rgba(34,19,64,.9)}
+.if::placeholder{color:var(--tm)}
+.il{font-size:.68rem;color:var(--td);text-transform:uppercase;letter-spacing:.1em;margin-bottom:5px;font-weight:600;display:block}
+.bp{
+  display:flex;align-items:center;justify-content:center;gap:8px;
+  background:var(--g);color:#fff;border:none;border-radius:var(--r-sm);
+  padding:13px;font-size:.9rem;font-weight:700;cursor:pointer;
+  font-family:inherit;width:100%;
+  box-shadow:0 8px 20px rgba(255,45,146,.3);
+  transition:all .25s var(--ease);
+  position:relative;overflow:hidden;
+}
+.bp::before{
+  content:'';position:absolute;top:0;left:-100%;width:100%;height:100%;
+  background:linear-gradient(90deg,transparent,rgba(255,255,255,.2),transparent);
+  transition:left .6s;
+}
+.bp:hover{transform:translateY(-2px);box-shadow:0 12px 28px rgba(255,45,146,.45)}
+.bp:hover::before{left:100%}
+.bp:active{transform:translateY(0)}
+.bg{
+  display:flex;align-items:center;justify-content:center;gap:8px;
+  background:transparent;color:var(--t);
+  border:1px solid var(--b);border-radius:var(--r-sm);
+  padding:12px;font-size:.88rem;font-weight:600;cursor:pointer;
+  font-family:inherit;width:100%;
+  transition:all .25s var(--ease);
+}
+.bg:hover{border-color:var(--p1);color:var(--p1);background:rgba(255,45,146,.05)}
+.dv{text-align:center;margin:14px 0;color:var(--tm);font-size:.72rem;position:relative}
+.dv::before,.dv::after{content:'';position:absolute;top:50%;width:35%;height:1px;background:var(--b)}
+.dv::before{left:0}.dv::after{right:0}
+
+/* ============ HEADER ============ */
+header{
+  position:fixed;top:0;left:0;right:0;height:62px;
+  background:rgba(7,5,13,.85);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);
+  border-bottom:1px solid var(--b);
+  z-index:100;display:flex;align-items:center;justify-content:space-between;padding:0 4%;
+  animation:slideDown .5s var(--ease);
+}
+@keyframes slideDown{from{transform:translateY(-100%)}to{transform:translateY(0)}}
+.brand{
+  font-family:Cinzel,serif;font-weight:700;font-size:1.15rem;
+  background:var(--g);-webkit-background-clip:text;background-clip:text;color:transparent;
+  cursor:pointer;display:flex;align-items:center;gap:9px;
+  transition:transform .25s var(--ease);
+}
+.brand:hover{transform:scale(1.02)}
+.bi{
+  width:30px;height:30px;border-radius:8px;
+  background:var(--g);
+  display:flex;align-items:center;justify-content:center;
+  font-size:.8rem;color:#fff;font-weight:800;
+  box-shadow:0 4px 12px rgba(255,45,146,.4);
+  position:relative;overflow:hidden;
+}
+.bi::after{
+  content:'';position:absolute;inset:0;
+  background:linear-gradient(45deg,transparent 30%,rgba(255,255,255,.3) 50%,transparent 70%);
+  animation:shine 3s ease-in-out infinite;
+}
+@keyframes shine{0%,100%{transform:translateX(-100%)}50%{transform:translateX(100%)}}
+.ha{display:flex;align-items:center;gap:8px}
+.ib{
+  background:var(--bg-s);border:1px solid var(--b);color:var(--td);
+  width:38px;height:38px;border-radius:50%;cursor:pointer;
+  display:flex;align-items:center;justify-content:center;font-size:.85rem;
+  transition:all .25s var(--ease);
+  position:relative;
+}
+.ib:hover{border-color:var(--p1);color:var(--p1);transform:translateY(-1px) rotate(8deg);box-shadow:0 4px 12px rgba(255,45,146,.25)}
+.ib:active{transform:scale(.95)}
+.uc{
+  display:flex;align-items:center;gap:7px;
+  background:var(--bg-s);border:1px solid var(--b);
+  border-radius:20px;padding:3px 11px 3px 3px;cursor:pointer;
+  transition:all .25s var(--ease);
+}
+.uc:hover{border-color:var(--p1);box-shadow:0 4px 12px rgba(255,45,146,.2)}
+.ua{
+  width:30px;height:30px;border-radius:50%;
+  background:var(--g);
+  display:flex;align-items:center;justify-content:center;
+  font-weight:700;font-size:.75rem;color:#fff;
+  box-shadow:inset 0 0 0 2px rgba(255,255,255,.2);
+}
+.uc span{font-size:.8rem;font-weight:600}
+.lp{
+  background:var(--g);color:#fff;border:none;border-radius:20px;
+  padding:7px 14px;font-size:.78rem;font-weight:700;cursor:pointer;
+  font-family:inherit;
+  box-shadow:0 4px 12px rgba(255,45,146,.3);
+  transition:all .25s var(--ease);
+}
+.lp:hover{transform:translateY(-1px);box-shadow:0 6px 16px rgba(255,45,146,.4)}
+
+/* ============ SIDEBAR ============ */
+.sb{
+  position:fixed;top:0;right:-340px;width:320px;max-width:90vw;height:100vh;
+  background:linear-gradient(180deg,var(--bg-s),var(--bg-2));
+  border-left:1px solid var(--b);
+  z-index:300;padding:22px 16px 28px;
+  display:flex;flex-direction:column;
+  transition:right .4s var(--ease);
+  overflow-y:auto;overflow-x:hidden;box-shadow:var(--sh);
+}
+.sb.active{right:0}
+@media(max-width:480px){
+  .sb{width:100vw;max-width:100vw;right:-100vw;padding:18px 14px 24px}
+  .sb.active{right:0}
+}
+.sbb{
+  position:fixed;inset:0;background:rgba(0,0,0,.55);
+  backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px);
+  z-index:299;opacity:0;visibility:hidden;
+  transition:all .3s var(--ease);
+}
+.sbb.show{opacity:1;visibility:visible}
+.sh{display:flex;align-items:center;justify-content:space-between;margin-bottom:14px;flex-shrink:0}
+.st{font-family:Cinzel,serif;font-size:1.05rem;font-weight:700;background:var(--g);-webkit-background-clip:text;background-clip:text;color:transparent}
+.cx{
+  background:var(--bg-e);border:1px solid var(--b);color:var(--td);
+  width:34px;height:34px;border-radius:50%;
+  display:flex;align-items:center;justify-content:center;cursor:pointer;
+  transition:all .25s var(--ease);flex-shrink:0;
+}
+.cx:hover{border-color:var(--p1);color:var(--p1);transform:rotate(90deg)}
+
+/* Sidebar body — always vertical stack */
+.sb-body{
+  display:flex;
+  flex-direction:column;
+  gap:4px;
+  flex:1;
+  min-height:0;
+}
+.sb-spacer{
+  height:12px;
+  flex-shrink:0;
+}
+
+.nsl{
+  font-size:.62rem;color:var(--tm);text-transform:uppercase;
+  letter-spacing:.14em;margin:12px 0 4px;font-weight:600;
+  padding-left:12px;flex-shrink:0;
+}
+.nsl:first-child{margin-top:0}
+
+.nl{
+  display:flex;
+  flex-direction:row;
+  align-items:center;
+  gap:12px;
+  padding:12px 14px;
+  border-radius:var(--r-sm);
+  color:var(--t);
+  font-size:.9rem;
+  font-weight:500;
+  cursor:pointer;
+  border:1px solid transparent;
+  transition:all .2s var(--ease);
+  position:relative;
+  width:100%;
+  box-sizing:border-box;
+  flex-shrink:0;
+}
+.nl i{
+  width:22px;min-width:22px;text-align:center;font-size:1rem;
+  flex-shrink:0;
+}
+.nl-text{
+  flex:1;
+  min-width:0;
+  white-space:nowrap;
+  overflow:hidden;
+  text-overflow:ellipsis;
+}
+.nl:hover{
+  background:var(--bg-e);
+  border-color:var(--b);
+  color:var(--p1);
+}
+.nl.active{
+  background:var(--g);
+  color:#fff;
+  border-color:transparent;
+  box-shadow:0 4px 14px rgba(255,45,146,.3);
+}
+.nl.active::before{
+  content:'';
+  position:absolute;left:0;top:20%;bottom:20%;
+  width:3px;border-radius:0 3px 3px 0;background:#fff;
+}
+.nl.locked{opacity:.55}
+.nl .badge{
+  margin-left:auto;
+  background:var(--p1);color:#fff;
+  font-size:.62rem;padding:2px 8px;border-radius:10px;font-weight:700;
+  flex-shrink:0;
+}
+
+/* ============ MAIN ============ */
+main{padding-top:62px;min-height:100vh}
+.sec{display:none;padding:24px 4% 60px;max-width:1100px;margin:0 auto}
+.sec.active{display:block;animation:secIn .5s var(--ease)}
+@keyframes secIn{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:translateY(0)}}
+.sti{
+  font-family:Cinzel,serif;font-size:1.7rem;font-weight:700;margin-bottom:4px;
+  background:linear-gradient(135deg,#fff 0%,var(--p1) 50%,var(--p2) 100%);
+  -webkit-background-clip:text;background-clip:text;color:transparent;
+  animation:slideIn .6s var(--ease);
+}
+@keyframes slideIn{from{opacity:0;transform:translateX(-10px)}to{opacity:1;transform:translateX(0)}}
+.ssu{color:var(--td);margin-bottom:22px;font-size:.88rem}
+.hg{display:grid;grid-template-columns:repeat(auto-fill,minmax(245px,1fr));gap:16px}
+
+/* ============ PROJECT CARD ============ */
+.pc{
+  background:linear-gradient(180deg,var(--bg-s),var(--bg-2));
+  border:1px solid var(--b);border-radius:var(--r);
+  overflow:hidden;cursor:pointer;
+  transition:all .35s var(--ease);
+  display:flex;flex-direction:column;position:relative;
+  animation:cardIn .5s var(--ease) both;
+}
+@keyframes cardIn{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:translateY(0)}}
+.pc:hover{
+  transform:translateY(-6px);
+  border-color:var(--p1);
+  box-shadow:0 20px 40px rgba(255,45,146,.2),0 0 0 1px rgba(255,45,146,.3);
+}
+.pc::before{
+  content:'';position:absolute;inset:0;border-radius:var(--r);padding:1px;
+  background:var(--g);-webkit-mask:linear-gradient(#fff 0 0) content-box,linear-gradient(#fff 0 0);
+  -webkit-mask-composite:xor;mask-composite:exclude;
+  opacity:0;transition:opacity .3s;pointer-events:none;z-index:2;
+}
+.pc:hover::before{opacity:1}
+.pco{width:100%;aspect-ratio:16/10;background:var(--bg-e);position:relative;overflow:hidden}
+.pco img,.pco video{width:100%;height:100%;object-fit:cover;transition:transform .6s var(--ease)}
+.pc:hover .pco img,.pc:hover .pco video{transform:scale(1.08)}
+.tc{
+  position:absolute;top:10px;left:10px;z-index:3;
+  background:rgba(0,0,0,.65);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);
+  color:#fff;padding:3px 10px;border-radius:14px;
+  font-size:.65rem;font-weight:700;display:flex;align-items:center;gap:4px;
+  border:1px solid rgba(255,255,255,.1);
+}
+.pb{
+  position:absolute;top:50%;left:50%;transform:translate(-50%,-50%) scale(.9);
+  width:48px;height:48px;border-radius:50%;
+  background:var(--g);
+  display:flex;align-items:center;justify-content:center;
+  color:#fff;font-size:1rem;opacity:0;
+  transition:all .3s var(--ease);z-index:3;
+  box-shadow:0 8px 20px rgba(0,0,0,.4);
+}
+.pc:hover .pb{opacity:1;transform:translate(-50%,-50%) scale(1)}
+.pbo{padding:13px 14px 14px;flex:1;display:flex;flex-direction:column}
+.pt{font-family:Space Grotesk,sans-serif;font-size:.95rem;font-weight:700;margin-bottom:4px;line-height:1.3}
+.pm{font-size:.72rem;color:var(--tm);margin-bottom:9px;display:flex;align-items:center;gap:4px;flex-wrap:wrap}
+.pm .sc{color:var(--p4);font-weight:600}
+.pa{display:flex;flex-wrap:wrap;gap:5px;margin-bottom:10px}
+.ap{
+  background:var(--bg-e);border:1px solid var(--b);
+  border-radius:14px;padding:3px 9px;font-size:.62rem;color:var(--td);
+  display:inline-flex;align-items:center;gap:4px;
+}
+.ap i{font-size:.58rem}
+.pas{display:flex;gap:6px;margin-top:auto}
+.pbt{
+  flex:1;background:var(--bg-e);border:1px solid var(--b);color:var(--td);
+  padding:7px;border-radius:9px;font-size:.72rem;cursor:pointer;
+  font-family:inherit;font-weight:600;
+  display:flex;align-items:center;justify-content:center;gap:4px;
+  transition:all .2s var(--ease);
+}
+.pbt:hover{border-color:var(--p1);color:var(--p1);background:rgba(255,45,146,.08)}
+.pbt.liked{background:var(--p1);color:#fff;border-color:var(--p1);box-shadow:0 4px 12px rgba(255,45,146,.4)}
+.pbt.liked i{animation:heartPop .5s var(--ease)}
+@keyframes heartPop{0%{transform:scale(1)}50%{transform:scale(1.4)}100%{transform:scale(1)}}
+
+/* ============ PROFILE HEADER ============ */
+.ph{
+  height:200px;border-radius:var(--r-lg);
+  background:var(--g);
+  background-size:200% 200%;
+  animation:shimmer 8s linear infinite;
+  display:flex;align-items:flex-end;padding:22px;margin-bottom:20px;
+  position:relative;overflow:hidden;
+  box-shadow:0 10px 30px rgba(168,85,247,.3);
+}
+.ph::before{
+  content:'';position:absolute;top:0;right:0;width:50%;height:100%;
+  background:radial-gradient(circle,rgba(255,255,255,.15),transparent 60%);
+}
+.ph::after{
+  content:'';position:absolute;bottom:0;left:0;right:0;height:50%;
+  background:linear-gradient(transparent,rgba(0,0,0,.2));
+}
+.phi{display:flex;align-items:center;gap:14px;position:relative;z-index:1}
+.ppl{width:78px;height:78px;border-radius:50%;background:#fff;padding:3px;box-shadow:0 8px 20px rgba(0,0,0,.3)}
+.ppi{width:100%;height:100%;border-radius:50%;background:#000;display:flex;align-items:center;justify-content:center;font-family:Cinzel,serif;font-size:1.6rem;font-weight:700;color:#fff;position:relative;overflow:hidden}
+.ppi::after{content:'';position:absolute;inset:0;background:linear-gradient(135deg,rgba(255,45,146,.3),rgba(59,130,246,.3))}
+.ppi span{position:relative;z-index:1}
+.pi h2{font-family:Cinzel,serif;font-size:1.4rem;color:#fff;margin-bottom:2px;text-shadow:0 2px 8px rgba(0,0,0,.3)}
+.pi .h{color:rgba(255,255,255,.9);font-size:.85rem;margin-bottom:6px}
+.ps{display:flex;gap:18px;margin-top:6px}
+.ps strong{display:block;font-size:1.1rem;font-weight:800;font-family:Space Grotesk,sans-serif;color:#fff;text-shadow:0 2px 4px rgba(0,0,0,.3)}
+.ps span{font-size:.65rem;color:rgba(255,255,255,.85);text-transform:uppercase;letter-spacing:.05em}
+
+.lb{
+  background:linear-gradient(135deg,rgba(251,191,36,.12),rgba(255,45,146,.12));
+  border:1px solid rgba(251,191,36,.4);border-radius:14px;
+  padding:14px 16px;margin-bottom:16px;
+  display:flex;align-items:center;gap:11px;
+  animation:glow 3s ease-in-out infinite;
+}
+@keyframes glow{0%,100%{box-shadow:0 0 0 0 rgba(251,191,36,.2)}50%{box-shadow:0 0 20px 0 rgba(251,191,36,.3)}}
+.lb i{color:var(--p5);font-size:1.1rem}
+.lb strong{color:var(--p5);display:block;margin-bottom:2px}
+.lb p{color:var(--td);font-size:.78rem;margin:0}
+
+.am{background:var(--bg-s);border:1px solid var(--b);border-radius:var(--r);padding:16px;margin-bottom:16px;transition:border-color .2s}
+.am:hover{border-color:var(--b-hi)}
+.am h3{font-family:Cinzel,serif;font-size:1.05rem;margin-bottom:4px;display:flex;align-items:center;gap:8px}
+.am>p{color:var(--td);font-size:.78rem;margin-bottom:12px}
+.al{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:10px}
+.ac{
+  background:var(--bg-e);border:1px solid var(--b);
+  border-radius:18px;padding:7px 13px;font-size:.8rem;font-weight:600;cursor:pointer;
+  display:flex;align-items:center;gap:7px;
+  transition:all .2s var(--ease);
+}
+.ac:hover{border-color:var(--p1);color:var(--p1);transform:translateY(-1px)}
+.ac.active{background:var(--g);color:#fff;border-color:transparent;box-shadow:0 4px 12px rgba(255,45,146,.35)}
+.ac .d{width:18px;height:18px;border-radius:50%;background:rgba(0,0,0,.4);display:flex;align-items:center;justify-content:center;font-size:.6rem;cursor:pointer;transition:background .2s}
+.ac .d:hover{background:var(--p1)}
+.bna{
+  background:transparent;border:1px dashed var(--p1);color:var(--p1);
+  padding:7px 14px;border-radius:18px;font-size:.8rem;font-weight:600;cursor:pointer;
+  font-family:inherit;transition:all .2s var(--ease);
+}
+.bna:hover{background:rgba(255,45,146,.1);transform:translateY(-1px)}
+
+.cab{display:none;margin-top:14px;padding-top:14px;border-top:1px solid var(--b);animation:secIn .4s var(--ease)}
+.cab.show{display:block}
+
+/* Cover preview */
+.cs{background:var(--bg-e);border:1px solid var(--b);border-radius:var(--r);padding:12px;margin-bottom:14px}
+.cs h4{font-size:.88rem;font-weight:700;margin-bottom:7px;display:flex;align-items:center;gap:6px}
+.cpv{
+  width:100%;aspect-ratio:16/9;border-radius:10px;overflow:hidden;
+  background:#000;margin-bottom:9px;position:relative;
+  border:1px solid var(--b);
+}
+.cpv img,.cpv video{width:100%;height:100%;object-fit:cover}
+.cpv .ph{
+  height:auto;border-radius:0;background:var(--bg-s);animation:none;
+  position:absolute;inset:0;display:flex;align-items:center;justify-content:center;
+  color:var(--tm);font-size:.82rem;flex-direction:column;gap:7px;
+  box-shadow:none;
+}
+.cpv .ph::before,.cpv .ph::after{display:none}
+
+.fg{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:14px}
+.fg .f{grid-column:1/-1}
+.fg .if{margin-bottom:0}
+
+.ug{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:11px;margin-bottom:14px}
+.uc2{
+  background:var(--bg-s);border:1px solid var(--b);border-radius:var(--r);
+  padding:14px;position:relative;
+  transition:all .3s var(--ease);
+  overflow:hidden;
+}
+.uc2::before{
+  content:'';position:absolute;top:0;left:0;right:0;height:3px;
+  background:var(--c,var(--p1));opacity:.7;
+}
+.uc2:hover{transform:translateY(-3px);border-color:var(--b-hi);box-shadow:0 10px 25px rgba(0,0,0,.3)}
+.uc2.voice{--c:var(--p4)}
+.uc2.music{--c:var(--p5)}
+.uc2.pics{--c:var(--p6)}
+.uc2.video{--c:var(--p1)}
+.ui{
+  width:36px;height:36px;border-radius:10px;
+  display:flex;align-items:center;justify-content:center;
+  font-size:1rem;margin-bottom:7px;
+  background:rgba(255,255,255,.06);
+  color:var(--c,var(--p1));
+}
+.uc2 h4{font-size:.88rem;font-weight:700;margin-bottom:3px}
+.uc2 p{color:var(--tm);font-size:.72rem;margin-bottom:8px}
+.ub{
+  display:flex;align-items:center;justify-content:center;gap:6px;
+  background:var(--bg-e);border:1px solid var(--b);color:var(--t);
+  padding:8px;border-radius:8px;font-size:.78rem;font-weight:600;cursor:pointer;
+  font-family:inherit;width:100%;transition:all .2s var(--ease);
+}
+.ub:hover{border-color:var(--p1);background:var(--p1);color:#fff;transform:translateY(-1px)}
+.ft{font-size:.62rem;color:var(--p4);margin-top:4px;display:block;text-align:center;text-transform:uppercase;letter-spacing:.05em}
+.ul{margin-top:7px;display:flex;flex-direction:column;gap:4px;max-height:120px;overflow-y:auto}
+.ur{
+  display:flex;align-items:center;gap:6px;
+  background:var(--bg-e);border:1px solid var(--b);
+  border-radius:8px;padding:5px 7px;font-size:.72rem;
+  transition:border-color .2s;
+}
+.ur:hover{border-color:var(--b-hi)}
+.ur .n{flex:1;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;color:var(--td)}
+.ur .ob{background:var(--p1);color:#fff;border:none;padding:3px 7px;border-radius:6px;font-size:.62rem;font-weight:700;cursor:pointer;transition:transform .2s}
+.ur .ob:hover{transform:scale(1.1)}
+.ur .db{background:#ef4444;color:#fff;border:none;padding:3px 6px;border-radius:6px;font-size:.62rem;cursor:pointer;transition:transform .2s}
+.ur .db:hover{transform:scale(1.1)}
+
+.so{
+  position:absolute;inset:0;background:rgba(10,6,18,.85);
+  border-radius:var(--r);backdrop-filter:blur(4px);
+  display:none;align-items:center;justify-content:center;z-index:5;
+  flex-direction:column;gap:7px;
+}
+.so.show{display:flex;animation:fadeIn .2s}
+@keyframes fadeIn{from{opacity:0}to{opacity:1}}
+.spn{width:32px;height:32px;border:3px solid rgba(255,255,255,.15);border-top-color:var(--p1);border-radius:50%;animation:sp .7s linear infinite}
+@keyframes sp{to{transform:rotate(360deg)}}
+.spt{font-size:.7rem;color:var(--td);font-weight:500}
+
+/* Pair editor */
+.ppe{background:var(--bg-s);border:1px solid var(--b);border-radius:var(--r);padding:14px;margin-bottom:14px}
+.ppe h3{font-family:Cinzel,serif;font-size:1rem;margin-bottom:4px;display:flex;align-items:center;gap:7px}
+.ppe>p{color:var(--td);font-size:.75rem;margin-bottom:9px}
+.pr{
+  display:grid;grid-template-columns:auto 1fr auto 1fr;gap:6px;align-items:center;
+  background:var(--bg-e);border:1px solid var(--b);border-radius:10px;
+  padding:9px;margin-bottom:6px;position:relative;
+  transition:border-color .2s;
+}
+.pr:hover{border-color:var(--b-hi)}
+.pr .psi{
+  width:44px;height:44px;border-radius:8px;
+  background:var(--bg-s);border:1px solid var(--b);
+  display:flex;align-items:center;justify-content:center;
+  overflow:hidden;cursor:pointer;color:var(--td);
+  transition:all .2s;
+}
+.pr .psi:hover{border-color:var(--p1);color:var(--p1);transform:scale(1.05)}
+.pr .psi img{width:100%;height:100%;object-fit:cover}
+.pr .pn{background:var(--bg-s);border:1px solid var(--b);border-radius:6px;padding:6px 8px;color:var(--t);font:inherit;font-size:.78rem;outline:none;width:100%;transition:border-color .2s}
+.pr .pn:focus{border-color:var(--p1)}
+.pr .pd{grid-column:1/-1;background:var(--bg-s);border:1px solid var(--b);border-radius:6px;padding:6px 8px;color:var(--t);font:inherit;font-size:.78rem;outline:none;resize:vertical;min-height:36px;transition:border-color .2s}
+.pr .pd:focus{border-color:var(--p1)}
+.pr .prm{
+  position:absolute;top:5px;right:5px;
+  background:rgba(239,68,68,.15);border:1px solid rgba(239,68,68,.4);color:#ef4444;
+  width:20px;height:20px;border-radius:50%;
+  display:flex;align-items:center;justify-content:center;cursor:pointer;
+  font-size:.6rem;transition:all .2s;
+}
+.pr .prm:hover{background:#ef4444;color:#fff;transform:scale(1.1) rotate(90deg)}
+
+.apb{
+  background:transparent;border:1px dashed var(--p1);color:var(--p1);
+  padding:8px;border-radius:8px;width:100%;
+  font-size:.78rem;font-weight:600;cursor:pointer;font-family:inherit;
+  transition:all .2s;
+}
+.apb:hover{background:rgba(255,45,146,.1);transform:translateY(-1px)}
+
+.dr{
+  display:grid;grid-template-columns:1fr 1fr;gap:10px;
+  background:var(--bg-s);border:1px solid var(--b);border-radius:var(--r);
+  padding:14px;margin-bottom:14px;
+}
+.dr h3{grid-column:1/-1;font-family:Cinzel,serif;font-size:.95rem;display:flex;align-items:center;gap:7px}
+.dr>p{grid-column:1/-1;color:var(--td);font-size:.72rem;margin-bottom:4px}
+.dr label{font-size:.62rem;color:var(--tm);text-transform:uppercase;display:block;margin-bottom:3px;letter-spacing:.05em;font-weight:600}
+.dr input{width:100%;background:var(--bg-e);border:1px solid var(--b);border-radius:7px;padding:7px 9px;color:var(--t);font:inherit;font-size:.78rem;outline:none;transition:border-color .2s}
+.dr input:focus{border-color:var(--p1)}
+
+.pcw{
+  text-align:center;margin:16px 0;padding:20px;
+  background:var(--g-soft);
+  border:1px solid var(--b-hi);border-radius:var(--r);
+  position:relative;overflow:hidden;
+}
+.pcw::before{
+  content:'';position:absolute;top:-50%;right:-20%;width:200px;height:200px;
+  background:radial-gradient(circle,rgba(255,45,146,.3),transparent 70%);
+  animation:pulse 4s ease-in-out infinite;
+}
+.pcw h3{font-family:Cinzel,serif;font-size:1.15rem;margin-bottom:5px;background:var(--g);-webkit-background-clip:text;background-clip:text;color:transparent;position:relative;z-index:1}
+.pcw p{color:var(--td);margin-bottom:12px;font-size:.82rem;position:relative;z-index:1}
+.bpo{
+  position:relative;z-index:1;
+  display:inline-flex;align-items:center;gap:8px;
+  background:var(--g);color:#fff;border:none;
+  padding:12px 24px;border-radius:22px;
+  font-size:.9rem;font-weight:800;cursor:pointer;font-family:inherit;
+  box-shadow:0 8px 20px rgba(255,45,146,.4);
+  transition:all .3s var(--ease);
+  overflow:hidden;
+}
+.bpo::before{content:'';position:absolute;top:0;left:-100%;width:100%;height:100%;background:linear-gradient(90deg,transparent,rgba(255,255,255,.25),transparent);transition:left .6s}
+.bpo:hover{transform:translateY(-3px) scale(1.02);box-shadow:0 12px 28px rgba(255,45,146,.5)}
+.bpo:hover::before{left:100%}
+.bpo:active{transform:translateY(-1px) scale(1)}
+
+/* ============ LIBRARY ============ */
+.ltb{display:flex;gap:6px;margin-bottom:14px;flex-wrap:wrap;padding:4px;background:var(--bg-s);border:1px solid var(--b);border-radius:14px;width:fit-content}
+.lt{
+  background:transparent;border:none;color:var(--td);
+  padding:7px 14px;border-radius:10px;
+  font-size:.78rem;font-weight:600;cursor:pointer;font-family:inherit;
+  transition:all .2s var(--ease);
+}
+.lt:hover{color:var(--p1)}
+.lt.active{background:var(--g);color:#fff;box-shadow:0 4px 10px rgba(255,45,146,.3)}
+.lg{display:grid;grid-template-columns:repeat(auto-fill,minmax(145px,1fr));gap:10px}
+.li{
+  background:var(--bg-s);border:1px solid var(--b);
+  border-radius:12px;overflow:hidden;cursor:pointer;
+  transition:all .25s var(--ease);
+  animation:cardIn .4s var(--ease) both;
+}
+.li:hover{border-color:var(--p1);transform:translateY(-3px);box-shadow:0 10px 25px rgba(255,45,146,.15)}
+.lth{width:100%;aspect-ratio:1;background:var(--bg-e);display:flex;align-items:center;justify-content:center;overflow:hidden}
+.lth img,.lth video{width:100%;height:100%;object-fit:cover;transition:transform .5s}
+.li:hover .lth img,.li:hover .lth video{transform:scale(1.1)}
+.lin{padding:8px 10px}
+.lin h5{font-size:.78rem;font-weight:600;margin-bottom:2px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.lin span{font-size:.62rem;color:var(--tm)}
+.le{
+  grid-column:1/-1;text-align:center;padding:48px 14px;color:var(--tm);
+  display:flex;flex-direction:column;align-items:center;gap:10px;
+}
+.le i{font-size:2.5rem;opacity:.3}
+.le h4{font-family:Cinzel,serif;font-size:1rem;color:var(--td)}
+.le p{font-size:.82rem;max-width:300px}
+.le .bp{width:auto;padding:9px 18px;margin-top:6px}
+
+/* ============ SETTINGS ============ */
+.sl{display:flex;flex-direction:column;gap:7px}
+.si{
+  display:flex;align-items:center;gap:13px;
+  background:var(--bg-s);border:1px solid var(--b);
+  border-radius:14px;padding:14px 16px;cursor:pointer;
+  transition:all .25s var(--ease);
+  position:relative;overflow:hidden;
+}
+.si:hover{border-color:var(--p1);transform:translateX(4px);box-shadow:0 6px 16px rgba(0,0,0,.2)}
+.si:hover::before{transform:scaleX(1)}
+.si::before{
+  content:'';position:absolute;left:0;top:0;bottom:0;width:3px;
+  background:var(--g);transform:scaleX(0);transform-origin:left;
+  transition:transform .3s var(--ease);
+}
+.si i:first-child{width:22px;text-align:center;color:var(--p2);font-size:1rem}
+.si:hover i:first-child{color:var(--p1);transform:scale(1.1)}
+.si .tx{flex:1}
+.si .tx strong{display:block;font-size:.9rem;font-weight:600;margin-bottom:2px}
+.si .tx span{font-size:.72rem;color:var(--tm)}
+.si .ar{color:var(--tm);font-size:.78rem;transition:all .2s}
+.si:hover .ar{color:var(--p1);transform:translateX(3px)}
+.si.toggle{cursor:default}
+.si.toggle:hover{transform:none;box-shadow:none}
+.si.toggle:hover::before{transform:scaleX(0)}
+
+/* Toggle switch */
+.ts{
+  position:relative;width:46px;height:24px;
+  background:var(--bg-e);border-radius:13px;
+  border:1px solid var(--b);cursor:pointer;
+  transition:all .3s var(--ease);
+}
+.ts::after{
+  content:'';position:absolute;top:2px;left:2px;
+  width:18px;height:18px;border-radius:50%;
+  background:#fff;transition:all .3s var(--ease);
+  box-shadow:0 2px 6px rgba(0,0,0,.3);
+}
+.ts.on{background:var(--g);border-color:transparent;box-shadow:0 0 12px rgba(255,45,146,.3)}
+.ts.on::after{left:24px}
+
+/* Settings panels */
+.spn2{
+  display:none;background:var(--bg-s);border:1px solid var(--b);
+  border-radius:var(--r);padding:20px;margin-top:12px;
+  animation:secIn .35s var(--ease);
+}
+.spn2.show{display:block}
+.spn2 h3{font-family:Cinzel,serif;font-size:1.15rem;margin-bottom:10px;background:var(--g);-webkit-background-clip:text;background-clip:text;color:transparent}
+.spn2 p,.spn2 li{color:var(--td);font-size:.85rem;line-height:1.6;margin-bottom:8px}
+.spn2 ul{padding-left:18px;margin-bottom:12px}
+.spn2 strong{color:var(--t)}
+
+.pg{display:grid;grid-template-columns:repeat(auto-fill,minmax(135px,1fr));gap:11px;margin-top:12px}
+.pc2{
+  border-radius:12px;overflow:hidden;border:1px solid var(--b);
+  cursor:pointer;transition:all .3s var(--ease);
+  background:var(--bg-e);
+  animation:cardIn .4s var(--ease) both;
+}
+.pc2:hover{border-color:var(--p1);transform:translateY(-4px) scale(1.02);box-shadow:0 12px 24px rgba(255,45,146,.2)}
+.pc2 img{width:100%;aspect-ratio:2/3;object-fit:cover;display:block;transition:transform .5s}
+.pc2:hover img{transform:scale(1.1)}
+.pc2 .pi2{padding:8px 10px}
+.pc2 .pi2 strong{display:block;font-size:.78rem;margin-bottom:2px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.pc2 .pi2 span{font-size:.62rem;color:var(--tm);text-transform:uppercase;letter-spacing:.05em}
+
+.ci{background:var(--bg-e);border:1px solid var(--b);border-radius:10px;padding:12px;font-size:.82rem;color:var(--td);margin-bottom:12px;line-height:1.7}
+
+/* ============ DETAIL OVERLAY ============ */
+.do{
+  position:fixed;inset:0;z-index:500;
+  background:rgba(0,0,0,.94);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);
+  display:none;overflow-y:auto;padding:14px;
+  animation:fadeIn .3s;
+}
+.do.show{display:block}
+.dc{
+  max-width:900px;margin:0 auto;background:var(--bg-s);
+  border:1px solid var(--b);border-radius:var(--r-lg);
+  overflow:hidden;position:relative;
+  animation:slideUp .4s var(--ease);
+  box-shadow:0 25px 60px rgba(0,0,0,.6);
+}
+.dcl{
+  position:absolute;top:12px;right:12px;
+  background:rgba(0,0,0,.7);border:1px solid var(--b);color:#fff;
+  width:36px;height:36px;border-radius:50%;
+  display:flex;align-items:center;justify-content:center;
+  cursor:pointer;z-index:5;transition:all .2s;
+  backdrop-filter:blur(8px);
+}
+.dcl:hover{border-color:var(--p1);color:var(--p1);transform:rotate(90deg) scale(1.1)}
+.dh{position:relative;width:100%;aspect-ratio:16/9;background:#000;overflow:hidden}
+.dh video,.dh img{width:100%;height:100%;object-fit:contain}
+.dho{position:absolute;bottom:0;left:0;right:0;padding:18px;background:linear-gradient(transparent,rgba(0,0,0,.9))}
+.dho h1{font-family:Cinzel,serif;font-size:1.4rem;color:#fff;margin-bottom:4px;text-shadow:0 2px 8px rgba(0,0,0,.5)}
+.dho .st2{color:var(--p4);font-weight:600;font-size:.85rem;display:inline-flex;align-items:center;gap:6px}
+.dho .st2::before{content:'';width:6px;height:6px;border-radius:50%;background:var(--p4);box-shadow:0 0 8px var(--p4)}
+.db2{padding:16px}
+.dst{font-size:.78rem;font-weight:700;text-transform:uppercase;letter-spacing:.06em;margin:14px 0 8px;color:var(--p4);display:flex;align-items:center;gap:7px;padding-bottom:5px;border-bottom:1px solid var(--b)}
+.dst i{color:var(--p2)}
+
+.ppr{display:grid;grid-template-columns:1fr 1fr;gap:8px;background:var(--bg-e);border:1px solid var(--b);border-radius:10px;padding:9px;margin-bottom:6px}
+.pps .ibx{aspect-ratio:1;background:var(--bg-s);border-radius:8px;overflow:hidden;display:flex;align-items:center;justify-content:center;border:1px solid var(--b);color:var(--tm)}
+.pps .ibx img{width:100%;height:100%;object-fit:cover}
+.pl{font-size:.62rem;color:var(--tm);text-transform:uppercase;text-align:center;margin-bottom:3px;letter-spacing:.05em;font-weight:600}
+.da{display:flex;flex-wrap:wrap;gap:7px;margin-top:14px;padding-top:14px;border-top:1px solid var(--b)}
+.fvp{width:100%;background:#000}
+.fvp video{width:100%;max-height:65vh;display:block}
+
+/* ============ MODAL ============ */
+.ov{
+  position:fixed;inset:0;z-index:600;
+  background:rgba(0,0,0,.85);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);
+  display:none;align-items:center;justify-content:center;padding:18px;
+  animation:fadeIn .25s;
+}
+.ov.show{display:flex}
+.md{
+  background:var(--bg-s);border:1px solid var(--b);
+  border-radius:var(--r-lg);width:100%;max-width:460px;max-height:88vh;overflow-y:auto;
+  box-shadow:0 25px 60px rgba(0,0,0,.6),0 0 30px rgba(168,85,247,.2);
+  animation:slideUp .35s var(--ease);
+  position:relative;
+}
+.md::before{
+  content:'';position:absolute;top:0;left:0;right:0;height:2px;
+  background:var(--g);border-radius:var(--r-lg) var(--r-lg) 0 0;
+}
+.mh{padding:14px 18px;border-bottom:1px solid var(--b);display:flex;align-items:center;justify-content:space-between;position:sticky;top:0;background:var(--bg-s);z-index:2}
+.mh h3{font-family:Cinzel,serif;font-size:1.1rem;background:var(--g);-webkit-background-clip:text;background-clip:text;color:transparent}
+.mb{padding:16px}
+.mf{padding:11px 18px;border-top:1px solid var(--b);display:flex;justify-content:flex-end;gap:9px;position:sticky;bottom:0;background:var(--bg-s);z-index:2}
+.mf .bg,.mf .bp{padding:9px 16px;width:auto;font-size:.82rem}
+
+.pm2{width:100%;border-radius:10px;overflow:hidden;background:#000;margin-bottom:9px}
+.pm2 video,.pm2 img,.pm2 audio{width:100%;display:block;max-height:50vh;object-fit:contain}
+
+/* Voice recording */
+.ra{background:var(--g-soft);border:1px solid var(--b);border-radius:12px;padding:18px;text-align:center;margin-bottom:9px;position:relative;overflow:hidden}
+.ra::before{content:'';position:absolute;top:0;left:0;right:0;bottom:0;background:radial-gradient(circle at center,rgba(255,45,146,.15),transparent 60%);animation:pulse 3s ease-in-out infinite}
+.rav{width:68px;height:68px;border-radius:50%;background:var(--g);margin:0 auto 11px;display:flex;align-items:center;justify-content:center;font-size:1.5rem;color:#fff;box-shadow:0 0 0 0 rgba(255,45,146,.5);position:relative;z-index:1;transition:all .3s}
+.ra.recording .rav{animation:recPulse 1.5s ease-in-out infinite;box-shadow:0 0 0 8px rgba(255,45,146,.2)}
+@keyframes recPulse{0%,100%{box-shadow:0 0 0 0 rgba(255,45,146,.5)}50%{box-shadow:0 0 0 15px rgba(255,45,146,0)}}
+.rb{
+  width:48px;height:48px;border-radius:50%;
+  background:var(--g);border:none;color:#fff;
+  font-size:1.1rem;cursor:pointer;
+  box-shadow:0 6px 18px rgba(255,45,146,.4);
+  transition:all .25s var(--ease);
+  position:relative;z-index:1;
+}
+.rb:hover{transform:scale(1.1)}
+.rb:active{transform:scale(.95)}
+.rb.recording{background:linear-gradient(135deg,#ef4444,#dc2626);box-shadow:0 6px 18px rgba(239,68,68,.5);animation:recPulse 1.5s ease-in-out infinite}
+.rt{color:var(--td);font-size:.85rem;margin-top:7px;font-family:Space Grotesk,sans-serif;font-weight:600;letter-spacing:.05em}
+
+/* ============ TOAST ============ */
+.toast{
+  position:fixed;bottom:20px;left:50%;
+  transform:translateX(-50%) translateY(20px);
+  background:var(--bg-e);border:1px solid var(--b);
+  color:#fff;padding:11px 18px;border-radius:18px;
+  font-size:.82rem;font-weight:600;
+  box-shadow:0 10px 30px rgba(0,0,0,.5);
+  z-index:9999;opacity:0;
+  transition:all .3s var(--ease);
+  max-width:90%;text-align:center;
+  display:flex;align-items:center;gap:8px;
+}
+.toast.show{transform:translateX(-50%) translateY(0);opacity:1}
+.toast.ok{border-color:var(--p4);box-shadow:0 10px 30px rgba(6,182,212,.3)}
+.toast.ok::before{content:'✓';color:var(--p4);font-weight:800}
+.toast.err{border-color:#ef4444;box-shadow:0 10px 30px rgba(239,68,68,.3)}
+.toast.err::before{content:'⚠';color:#ef4444;font-weight:800}
+
+/* ============ FOCUS STATES ============ */
+button:focus-visible,a:focus-visible,input:focus-visible,textarea:focus-visible,.ts:focus-visible{
+  outline:2px solid var(--p1);outline-offset:2px;
+}
+button:focus-visible{outline-offset:3px}
+
+/* ============ RESPONSIVE ============ */
+@media(max-width:600px){
+  .sec{padding:18px 4% 50px}
+  .sti{font-size:1.4rem}
+  .hg{grid-template-columns:repeat(auto-fill,minmax(160px,1fr));gap:11px}
+  .lc{padding:32px 24px}
+  .fg{grid-template-columns:1fr}
+  .dr{grid-template-columns:1fr}
+  .ph{height:170px;padding:16px}
+  .ppl{width:64px;height:64px}
+}
+@media(prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation-duration:.01ms!important;transition-duration:.01ms!important}
+}
+</style>
+</head>
+<body>
+
+<!-- ============ SPLASH ============ -->
+<div id="splash">
+  <div class="sp-rings">
+    <div class="sp-r"></div>
+    <div class="sp-r"></div>
+    <div class="sp-r"></div>
+  </div>
+  <div class="sp-c">
+    <h1 class="sp-l">LumiFrames</h1>
+    <div class="sp-s">Studios</div>
+    <div class="sp-dots">
+      <div class="sp-dot"></div>
+      <div class="sp-dot"></div>
+      <div class="sp-dot"></div>
+    </div>
+    <div class="sp-w">Crafting your <span>studio</span></div>
+  </div>
+</div>
+
+<!-- ============ LOGIN ============ -->
+<div id="login">
+  <form class="lc" id="lf" onsubmit="return false">
+    <div class="ll">Welcome Back</div>
+    <div class="lt">Continue to LumiFrames</div>
+    <label class="il">Email Address</label>
+    <input type="email" id="le" class="if" placeholder="you@studio.com" required autocomplete="email"/>
+    <button type="submit" class="bp" onclick="document.getElementById('lf').dispatchEvent(new Event('submit'))">
+      <i class="fas fa-right-to-bracket"></i> Sign In
+    </button>
+    <div class="dv">OR</div>
+    <button type="button" class="bg" onclick="skip()">
+      <i class="fas fa-user-astronaut"></i> Continue as Guest
+    </button>
+  </form>
+</div>
+
+<!-- ============ APP ============ -->
+<div id="app">
+<header>
+  <div class="brand" onclick="go('home')">
+    <div class="bi">L</div>
+    LumiFrames
+  </div>
+  <div class="ha">
+    <div id="ua"></div>
+    <button class="ib" onclick="hn('profile')" title="Create"><i class="fas fa-plus"></i></button>
+    <button class="ib" id="mob" title="Menu"><i class="fas fa-bars"></i></button>
+  </div>
+</header>
+
+<div class="sbb" id="sbb"></div>
+<aside class="sb" id="sb">
+  <div class="sh">
+    <div class="st">Menu</div>
+    <button class="cx" id="mcb" aria-label="Close menu"><i class="fas fa-times"></i></button>
+  </div>
+
+  <!-- Logged-in menu -->
+  <div id="lo" class="sb-body" style="display:none">
+    <div class="nsl">Browse</div>
+    <div class="nl" data-g="home" onclick="hn('home')">
+      <i class="fas fa-house"></i>
+      <span class="nl-text">Home Feed</span>
+    </div>
+    <div class="nl" data-g="library" onclick="hn('library')">
+      <i class="fas fa-folder-open"></i>
+      <span class="nl-text">My Library</span>
+      <span class="badge" id="mb">0</span>
+    </div>
+
+    <div class="nsl">Create</div>
+    <div class="nl" data-g="profile" onclick="hn('profile')">
+      <i class="fas fa-user-circle"></i>
+      <span class="nl-text">My Studio</span>
+    </div>
+    <div class="nl" data-g="uploads" onclick="hn('uploads')">
+      <i class="fas fa-cloud-arrow-up"></i>
+      <span class="nl-text">Uploads</span>
+      <span class="badge" id="ub">0</span>
+    </div>
+
+    <div class="nsl">App</div>
+    <div class="nl" data-g="settings" onclick="hn('settings')">
+      <i class="fas fa-gear"></i>
+      <span class="nl-text">Settings</span>
+    </div>
+
+    <div class="sb-spacer"></div>
+    <div class="nsl">Account</div>
+    <div class="nl" onclick="logout()">
+      <i class="fas fa-right-from-bracket"></i>
+      <span class="nl-text">Log Out</span>
+    </div>
+  </div>
+
+  <!-- Guest menu -->
+  <div id="li" class="sb-body">
+    <div class="nsl">Welcome</div>
+    <div class="nl" data-g="home" onclick="go('home')">
+      <i class="fas fa-house"></i>
+      <span class="nl-text">Home Feed</span>
+    </div>
+    <div class="nl locked" onclick="sl()">
+      <i class="fas fa-lock"></i>
+      <span class="nl-text">My Studio</span>
+    </div>
+    <div class="nl locked" onclick="sl()">
+      <i class="fas fa-lock"></i>
+      <span class="nl-text">My Library</span>
+    </div>
+
+    <div class="nsl">App</div>
+    <div class="nl" data-g="settings" onclick="go('settings')">
+      <i class="fas fa-gear"></i>
+      <span class="nl-text">Settings</span>
+    </div>
+
+    <div class="sb-spacer"></div>
+    <div class="nsl">Account</div>
+    <div class="nl" onclick="sl()">
+      <i class="fas fa-right-to-bracket"></i>
+      <span class="nl-text">Sign In</span>
+    </div>
+  </div>
+</aside>
+
+<main>
+  <!-- HOME -->
+  <section class="sec" id="s-home">
+    <h1 class="sti">Home Feed</h1>
+    <p class="ssu">Discover anime from studios around the world</p>
+    <div class="hg" id="hf"></div>
+  </section>
+
+  <!-- PROFILE -->
+  <section class="sec" id="s-profile">
+    <div class="ph">
+      <div class="phi">
+        <div class="ppl"><div class="ppi" id="pba"><span id="pbi">A</span></div></div>
+        <div class="pi">
+          <h2 id="pn">Artist</h2>
+          <div class="h" id="phn">@artist</div>
+          <div class="ps">
+            <div><strong id="sa">0</strong><span>Anime</span></div>
+            <div><strong id="sl">0</strong><span>Likes</span></div>
+            <div><strong id="sm">0</strong><span>Media</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="lb" id="plk" style="display:none">
+      <i class="fas fa-lock"></i>
+      <div><strong>Login Required</strong><p>Sign in to create and manage your anime.</p></div>
+    </div>
+
+    <div id="pcn" style="display:none">
+      <div class="am">
+        <h3><i class="fas fa-film" style="color:var(--p1)"></i> My Anime</h3>
+        <p>Create and manage your anime projects.</p>
+        <div class="al" id="alu"></div>
+        <button class="bna" onclick="cna()"><i class="fas fa-plus"></i> New Anime</button>
+      </div>
+
+      <div class="cab" id="cab">
+        <div class="cs">
+          <h4><i class="fas fa-image" style="color:var(--p2)"></i> Cover Image</h4>
+          <div class="cpv" id="cpv"></div>
+          <input type="file" id="cu" accept="image/*" style="display:none"/>
+          <div style="display:flex;gap:6px;flex-wrap:wrap">
+            <button class="bg" onclick="document.getElementById('cu').click()" style="flex:1;padding:8px"><i class="fas fa-upload"></i> Upload</button>
+            <button class="bg" onclick="cc()" style="flex:1;padding:8px"><i class="fas fa-trash"></i> Remove</button>
+          </div>
+        </div>
+
+        <div class="fg">
+          <div class="f"><label class="il">Title</label><input type="text" id="ati" class="if" placeholder="Anime title" oninput="uf('title',this.value)"/></div>
+          <div><label class="il">Studio</label><input type="text" id="asi" class="if" placeholder="Studio name" oninput="uf('studio',this.value)"/></div>
+          <div><label class="il">Author Handle</label><input type="text" id="aai" class="if" placeholder="@handle" oninput="uf('author',this.value)"/></div>
+          <div><label class="il">Genre</label><input type="text" id="agi" class="if" placeholder="Action, Romance…" oninput="uf('genre',this.value)"/></div>
+          <div><label class="il">Year</label><input type="text" id="ayi" class="if" placeholder="2026" oninput="uf('year',this.value)"/></div>
+          <div class="f"><label class="il">Description</label><textarea id="adi" class="if" rows="2" placeholder="Brief synopsis…" oninput="uf('description',this.value)" style="resize:vertical"></textarea></div>
+        </div>
+
+        <h3 style="font-family:Cinzel,serif;font-size:1rem;margin:14px 0 6px;display:flex;align-items:center;gap:7px"><i class="fas fa-cloud-arrow-up" style="color:var(--p1)"></i> Upload Media</h3>
+        <p style="color:var(--td);font-size:.75rem;margin-bottom:8px">Vercel Blob storage. PNG · MP3 · WAV · MP4</p>
+        <div class="ug">
+          <div class="uc2 voice">
+            <div class="so" id="vs"><div class="spn"></div><div class="spt">Saving…</div></div>
+            <div class="ui"><i class="fas fa-microphone"></i></div>
+            <h4>Voice</h4><p>Record voice</p>
+            <button class="ub" onclick="ovm()"><i class="fas fa-circle-dot"></i> Record</button>
+            <span class="ft">WEBM</span>
+            <div class="ul" id="vl"></div>
+          </div>
+          <div class="uc2 music">
+            <div class="so" id="ms"><div class="spn"></div><div class="spt">Saving…</div></div>
+            <div class="ui"><i class="fas fa-music"></i></div>
+            <h4>Music</h4><p>Max 20MB</p>
+            <button class="ub" onclick="document.getElementById('mu').click()"><i class="fas fa-file-audio"></i> Upload Audio</button>
+            <input type="file" id="mu" accept="audio/*" style="display:none"/>
+            <span class="ft">MP3 / WAV</span>
+            <div class="ul" id="ml"></div>
+          </div>
+          <div class="uc2 pics">
+            <div class="so" id="ps"><div class="spn"></div><div class="spt">Saving…</div></div>
+            <div class="ui"><i class="fas fa-image"></i></div>
+            <h4>Pictures</h4><p>Max 8MB each</p>
+            <button class="ub" onclick="document.getElementById('pu').click()"><i class="fas fa-file-image"></i> Upload Images</button>
+            <input type="file" id="pu" accept="image/png,image/jpeg,image/webp" multiple style="display:none"/>
+            <span class="ft">PNG · JPG · WEBP</span>
+            <div class="ul" id="pl"></div>
+          </div>
+          <div class="uc2 video">
+            <div class="so" id="vs2"><div class="spn"></div><div class="spt">Saving…</div></div>
+            <div class="ui"><i class="fas fa-film"></i></div>
+            <h4>Video</h4><p>Full MP4 · 50MB</p>
+            <button class="ub" onclick="document.getElementById('vu').click()"><i class="fas fa-file-video"></i> Upload Video</button>
+            <input type="file" id="vu" accept="video/mp4,video/webm,video/*" style="display:none"/>
+            <span class="ft">MP4 · WEBM</span>
+            <div class="ul" id="vl2"></div>
+          </div>
+        </div>
+
+        <div class="ppe">
+          <h3><i class="fas fa-users" style="color:var(--p2)"></i> Character Pairs</h3>
+          <p>Order preserved. Add an anime character and a real-life reference.</p>
+          <div id="prs"></div>
+          <button class="apb" onclick="apr()"><i class="fas fa-plus"></i> Add pair</button>
+        </div>
+
+        <div class="dr">
+          <h3><i class="fas fa-calendar" style="color:var(--p4)"></i> Release Schedule</h3>
+          <p>Dates for this anime.</p>
+          <div><label>Announcement</label><input type="date" id="ad" onchange="uf('announceDate',this.value)"/></div>
+          <div><label>Release</label><input type="date" id="rd" onchange="uf('releaseDate',this.value)"/></div>
+        </div>
+
+        <div class="pcw">
+          <h3>Publish this Anime</h3>
+          <p>Vercel Blob — global storage.</p>
+          <button class="bpo" onclick="pub()"><i class="fas fa-paper-plane"></i> Publish / Update</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- UPLOADS — published anime for preview & edit -->
+  <section class="sec" id="s-uploads">
+    <h1 class="sti">Uploads</h1>
+    <p class="ssu">Your published anime — preview or edit</p>
+    <div class="hg" id="upg"></div>
+  </section>
+
+  <!-- LIBRARY -->
+  <section class="sec" id="s-library">
+    <h1 class="sti">My Library</h1>
+    <p class="ssu">All media (Vercel Blob)</p>
+    <div class="ltb">
+      <button class="lt active" data-t="all" onclick="slt('all')">All</button>
+      <button class="lt" data-t="voice" onclick="slt('voice')">Voice</button>
+      <button class="lt" data-t="music" onclick="slt('music')">Music</button>
+      <button class="lt" data-t="pics" onclick="slt('pics')">Pics</button>
+      <button class="lt" data-t="video" onclick="slt('video')">Videos</button>
+    </div>
+    <div class="lg" id="lgr"></div>
+  </section>
+
+  <!-- SETTINGS -->
+  <section class="sec" id="s-settings">
+    <h1 class="sti">Settings</h1>
+    <p class="ssu">Preferences, legal, storage & more</p>
+    <div class="sl">
+      <div class="si" onclick="osp('about')"><i class="fas fa-circle-info"></i><div class="tx"><strong>About</strong><span>App info & version</span></div><i class="fas fa-chevron-right ar"></i></div>
+      <div class="si" onclick="osp('terms')"><i class="fas fa-file-contract"></i><div class="tx"><strong>Terms & Policies</strong><span>Usage & privacy</span></div><i class="fas fa-chevron-right ar"></i></div>
+      <div class="si" onclick="osp('privacy')"><i class="fas fa-shield-halved"></i><div class="tx"><strong>Privacy Policy</strong><span>How data is handled</span></div><i class="fas fa-chevron-right ar"></i></div>
+      <div class="si" onclick="osp('report')"><i class="fas fa-flag"></i><div class="tx"><strong>Report</strong><span>Report a problem</span></div><i class="fas fa-chevron-right ar"></i></div>
+      <div class="si" onclick="osp('seemore')"><i class="fas fa-images"></i><div class="tx"><strong>See More</strong><span>Demo posters & links</span></div><i class="fas fa-chevron-right ar"></i></div>
+      <div class="si" onclick="osp('cache')"><i class="fas fa-database"></i><div class="tx"><strong>Cache</strong><span>View & clear storage</span></div><i class="fas fa-chevron-right ar"></i></div>
+      <div class="si toggle"><i class="fas fa-ad"></i><div class="tx"><strong>Allow Ads</strong><span>Show promotional content</span></div><div class="ts" id="taa" onclick="ts('allowAds')" role="switch" tabindex="0"></div></div>
+      <div class="si toggle"><i class="fas fa-rectangle-ad"></i><div class="tx"><strong>Ads On / Off</strong><span>Master ads switch</span></div><div class="ts" id="tad" onclick="ts('ads')" role="switch" tabindex="0"></div></div>
+      <div class="si" onclick="osp('team')"><i class="fas fa-users"></i><div class="tx"><strong>Visit Our Team</strong><span>Contact form</span></div><i class="fas fa-chevron-right ar"></i></div>
+      <div class="si" onclick="osp('help')"><i class="fas fa-circle-question"></i><div class="tx"><strong>Help & FAQ</strong><span>How to use the app</span></div><i class="fas fa-chevron-right ar"></i></div>
+      <div class="si" onclick="osp('feedback')"><i class="fas fa-comment-dots"></i><div class="tx"><strong>Send Feedback</strong><span>Suggestions & ideas</span></div><i class="fas fa-chevron-right ar"></i></div>
+    </div>
+
+    <div class="spn2" id="p-about">
+      <h3>About LumiFrames</h3>
+      <p>LumiFrames Studios is an anime advertisement platform. Studios manage multiple anime, each with videos, pictures, music and voice.</p>
+      <p><strong>Version 2.0</strong> · Vercel Blob storage · Global</p>
+      <p>Hierarchy: Studio → Anime → Media</p>
+      <button class="bg" style="width:auto;margin-top:8px" onclick="csp()">Close</button>
+    </div>
+    <div class="spn2" id="p-terms">
+      <h3>Terms & Policies</h3>
+      <ul>
+        <li>Data stored in Vercel Blob (global storage).</li>
+        <li>Media shared across all users.</li>
+        <li>Do not upload material you do not own.</li>
+        <li>We may update these terms.</li>
+        <li>Use the platform responsibly.</li>
+      </ul>
+      <button class="bg" style="width:auto" onclick="csp()">Close</button>
+    </div>
+    <div class="spn2" id="p-privacy">
+      <h3>Privacy Policy</h3>
+      <p>Data is stored in Vercel Blob. We do not collect personal information beyond what you provide. Media and metadata are globally accessible.</p>
+      <button class="bg" style="width:auto" onclick="csp()">Close</button>
+    </div>
+    <div class="spn2" id="p-report">
+      <h3>Report a Problem</h3>
+      <p>Describe the issue.</p>
+      <textarea id="rt" class="if" rows="3" placeholder="What went wrong?"></textarea>
+      <div style="display:flex;gap:7px;margin-top:7px;flex-wrap:wrap">
+        <button class="bp" style="width:auto;padding:9px 16px" onclick="sr()"><i class="fas fa-paper-plane"></i> Submit</button>
+        <button class="bg" style="width:auto;padding:9px 16px" onclick="csp()">Cancel</button>
+      </div>
+    </div>
+    <div class="spn2" id="p-seemore">
+      <h3>See More — Demo Posters</h3>
+      <p>Sample manga & anime posters. Tap to open related links.</p>
+      <div class="pg" id="pgr"></div>
+      <button class="bg" style="width:auto;margin-top:12px" onclick="csp()">Close</button>
+    </div>
+    <div class="spn2" id="p-cache">
+      <h3>Storage Info</h3>
+      <div class="ci" id="cii">Loading storage info…</div>
+      <button class="bp" style="width:auto;margin-bottom:7px;padding:9px 16px" onclick="vc()"><i class="fas fa-eye"></i> Refresh Info</button>
+      <button class="bg" style="width:auto;color:#ef4444;border-color:#ef4444;padding:9px 16px" onclick="cad()"><i class="fas fa-trash"></i> Clear All Data</button>
+      <button class="bg" style="width:auto;padding:9px 16px" onclick="csp()">Close</button>
+    </div>
+    <div class="spn2" id="p-team">
+      <h3>Visit Our Team</h3>
+      <p>Send a message.</p>
+      <label class="il">Name</label><input type="text" id="tn" class="if" placeholder="Your name"/>
+      <label class="il">Email</label><input type="email" id="te" class="if" placeholder="you@email.com"/>
+      <label class="il">Message</label><textarea id="tm" class="if" rows="3" placeholder="Message…"></textarea>
+      <div style="display:flex;gap:7px;margin-top:7px;flex-wrap:wrap">
+        <button class="bp" style="width:auto;padding:9px 16px" onclick="ste()"><i class="fas fa-envelope"></i> Send via Email</button>
+        <button class="bg" style="width:auto;padding:9px 16px" onclick="csp()">Cancel</button>
+      </div>
+    </div>
+    <div class="spn2" id="p-help">
+      <h3>Help & FAQ</h3>
+      <p><strong>How do I create an anime?</strong><br>Go to Profile → Create New Anime → add title, cover, media → Publish.</p>
+      <p><strong>Where is my data?</strong><br>Stored in Vercel Blob (global storage).</p>
+      <p><strong>Can I have multiple anime?</strong><br>Yes. One studio can own many anime, each with its own media.</p>
+      <button class="bg" style="width:auto;margin-top:8px" onclick="csp()">Close</button>
+    </div>
+    <div class="spn2" id="p-feedback">
+      <h3>Send Feedback</h3>
+      <p>Share ideas or suggestions.</p>
+      <textarea id="fb" class="if" rows="3" placeholder="Your feedback…"></textarea>
+      <div style="display:flex;gap:7px;margin-top:7px;flex-wrap:wrap">
+        <button class="bp" style="width:auto;padding:9px 16px" onclick="sfb()"><i class="fas fa-paper-plane"></i> Send</button>
+        <button class="bg" style="width:auto;padding:9px 16px" onclick="csp()">Cancel</button>
+      </div>
+    </div>
+  </section>
+</main>
+</div>
+
+<!-- ============ OVERLAYS ============ -->
+<div class="do" id="dov"><div class="dc" id="dct"></div></div>
+<div class="ov" id="prm">
+  <div class="md">
+    <div class="mh"><h3 id="prt">Preview</h3><button class="cx" onclick="cpr()"><i class="fas fa-times"></i></button></div>
+    <div class="mb" id="prb"></div>
+    <div class="mf"><button class="bg" onclick="cpr()">Close</button></div>
+  </div>
+</div>
+<div class="ov" id="vm">
+  <div class="md">
+    <div class="mh"><h3>Record Voice</h3><button class="cx" onclick="cvm()"><i class="fas fa-times"></i></button></div>
+    <div class="mb">
+      <div class="ra" id="raBox">
+        <div class="rav"><i class="fas fa-microphone"></i></div>
+        <button class="rb" id="rbtn" onclick="tr()"><i class="fas fa-microphone"></i></button>
+        <div class="rt" id="rti">00:00</div>
+      </div>
+      <label class="il">Voice Name</label><input type="text" id="vt" class="if" placeholder="e.g. Opening Narration"/>
+      <label class="il">Character</label><input type="text" id="vc" class="if" placeholder="e.g. Hero"/>
+    </div>
+    <div class="mf">
+      <button class="bg" onclick="cvm()">Cancel</button>
+      <button class="bp" onclick="sv()"><i class="fas fa-check"></i> Save</button>
+    </div>
+  </div>
+</div>
+
+<script>
+/* ========================================================================
+   LUMIFRAMES WITH VERCEL BLOB – COMPLETE SCRIPT
+   ======================================================================== */
+
+const API_BASE = '/api';
+let user = null;
+let anime = [];
+let cid = null;
+let ltab = 'all';
+let set = { allowAds: true, ads: true };
+let mr = null, rc = [], rs = 0, rti = null, rec = false;
+const urls = new Map();
+
+// -------- API HELPERS --------
+async function apiFetch(endpoint, options = {}) {
+  const res = await fetch(`${API_BASE}${endpoint}`, {
+    ...options,
+    headers: { 'Content-Type': 'application/json', ...options.headers }
+  });
+  const data = await res.json();
+  if (!res.ok) throw new Error(data.error || 'API request failed');
+  return data;
+}
+
+// -------- LOAD ANIME FROM BLOB --------
+async function loadAnime() {
+  try {
+    const data = await apiFetch('/anime');
+    anime = data.anime || [];
+  } catch (e) {
+    console.warn('Failed to load anime from Blob, using defaults:', e);
+    if (!anime.length) {
+      anime = [
+        {id: Date.now()-5e3, user_id:1, studio:'Studio Zero Network', author:'@studio_zero', title:'Chrono Paradox — Opening Cut', cover:'https://images.unsplash.com/photo-1579546929518-9e396f3cc809?w=800', genre:'Sci-Fi', year:'2026', description:'A time-travel thriller from a rookie studio — Episode 1 preview.', voice:[], music:[], pics:[], video:[], pairs:[], announceDate:'', releaseDate:'2026-09-15', likes:42, liked_by_me:0, subscribed_by_me:0, ts:Date.now()-5e3, ad:1, published:1},
+        {id: Date.now()-4e3, user_id:2, studio:'Nexus Mind Production', author:'@nexus_mind', title:'Ghost in the Shell — Reveal', cover:'https://images.unsplash.com/photo-1614741118887-7a4ee193a5fa?w=800', genre:'Cyberpunk', year:'2026', description:'The cult classic reimagined for 2026. Coming this winter.', voice:[], music:[], pics:[], video:[], pairs:[], announceDate:'', releaseDate:'2026-12-01', likes:88, liked_by_me:0, subscribed_by_me:0, ts:Date.now()-4e3, ad:0, published:1},
+        {id: Date.now()-3e3, user_id:3, studio:'MAPPA Core Studios', author:'@mappa_core', title:'JJK Phantom Run Trailer', cover:'https://images.unsplash.com/photo-1508739773434-c26b3d09e071?w=800', genre:'Action', year:'2026', description:'Sorcerers, curses, and a brand new arc — first look.', voice:[], music:[], pics:[], video:[], pairs:[], announceDate:'', releaseDate:'2026-10-20', likes:154, liked_by_me:0, subscribed_by_me:0, ts:Date.now()-3e3, ad:0, published:1}
+      ];
+      saveAnime();
+    }
+  }
+}
+
+// -------- SAVE ANIME TO BLOB --------
+async function saveAnime() {
+  try {
+    await apiFetch('/anime', {
+      method: 'POST',
+      body: JSON.stringify({ anime })
+    });
+  } catch (e) {
+    console.error('Failed to save anime:', e);
+    toast('Failed to save changes to server', true);
+  }
+}
+
+// -------- UPLOAD FILE TO BLOB --------
+async function uploadFileToBlob(file, type, metadata = {}) {
+  const formData = new FormData();
+  formData.append('file', file);
+  formData.append('type', type);
+  formData.append('title', metadata.title || file.name);
+  formData.append('desc', metadata.desc || '');
+  const res = await fetch(`${API_BASE}/upload`, {
+    method: 'POST',
+    body: formData
+  });
+  const data = await res.json();
+  if (!res.ok) throw new Error(data.error || 'Upload failed');
+  return data.file;
+}
+
+// -------- DELETE FILE FROM BLOB --------
+async function deleteFileFromBlob(fileId) {
+  const res = await fetch(`${API_BASE}/delete?id=${fileId}`, { method: 'DELETE' });
+  const data = await res.json();
+  if (!res.ok) throw new Error(data.error || 'Delete failed');
+  return data;
+}
+
+// -------- GET ALL FILES (Library) --------
+async function getAllFiles() {
+  const data = await apiFetch('/files');
+  return data.files || [];
+}
+
+// -------- BLOB REPLACEMENT FUNCTIONS --------
+async function sblob(id, blob, meta = {}) {
+  const file = new File([blob], meta.name || 'file', { type: blob.type });
+  const uploaded = await uploadFileToBlob(file, meta.type || 'file', { title: meta.name });
+  return uploaded.id;
+}
+
+async function gurl(id) {
+  for (const a of anime) {
+    for (const type of ['voice','music','pics','video']) {
+      const item = (a[type] || []).find(m => m.id === id);
+      if (item && item.url) return item.url;
+    }
+  }
+  return null;
+}
+
+async function idel(id) {
+  await deleteFileFromBlob(id);
+}
+
+async function iclr() { /* Not needed with Blob */ }
+async function icnt() { return 0; }
+async function iget() { return null; }
+async function odb() { return null; }
+
+function odb() { return Promise.resolve(null); }
+function iput() { return Promise.resolve(); }
+function iclr() { return Promise.resolve(); }
+function icnt() { return Promise.resolve(0); }
+
+// -------- HELPER FUNCTIONS --------
+function toast(m, e) {
+  const t = document.createElement('div');
+  t.className = 'toast ' + (e ? 'err' : 'ok');
+  t.textContent = m;
+  document.body.appendChild(t);
+  requestAnimationFrame(() => t.classList.add('show'));
+  setTimeout(() => {
+    t.classList.remove('show');
+    setTimeout(() => t.remove(), 300);
+  }, 2800);
+}
+
+function esc(s) {
+  return String(s||'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;').replace(/'/g,'&#39;');
+}
+
+function ta(ts) {
+  const s = Math.floor((Date.now()-ts)/1000);
+  if(s<60) return 'just now';
+  if(s<3600) return Math.floor(s/60)+'m ago';
+  if(s<86400) return Math.floor(s/3600)+'h ago';
+  return Math.floor(s/86400)+'d ago';
+}
+
+function ss2(id) { document.getElementById(id)?.classList.add('show'); }
+function hs(id) { document.getElementById(id)?.classList.remove('show'); }
+function gca() { return anime.find(a => a.id === cid) || null; }
+function gma() { return user ? anime.filter(a => a.user_id === user.id) : []; }
+
+// -------- USER AUTH --------
+document.getElementById('lf').addEventListener('submit', function(e) {
+  e.preventDefault();
+  const em = document.getElementById('le').value.trim();
+  if (!em) { toast('Enter your email', true); return; }
+  const n = em.split('@')[0] || 'Artist';
+  const name = n.charAt(0).toUpperCase() + n.slice(1);
+  user = { name, handle: '@'+n.toLowerCase().replace(/[^a-z0-9_]/g,''), email: em, id: Date.now() };
+  localStorage.setItem('lf_user', JSON.stringify(user));
+  document.getElementById('login').classList.remove('show');
+  ea();
+  toast(`Welcome, ${user.name}!`);
+});
+
+function skip() {
+  user = { name:'Guest Artist', handle:'@guest', email:'guest@lumiframes.io', id:Date.now() };
+  localStorage.setItem('lf_user', JSON.stringify(user));
+  document.getElementById('login').classList.remove('show');
+  ea();
+  toast('Welcome, Guest!');
+}
+
+function logout() {
+  if (confirm('Log out? Your local data will stay.')) {
+    localStorage.removeItem('lf_user');
+    location.reload();
+  }
+}
+
+function sl() { document.getElementById('login').classList.add('show'); }
+
+function hn(t) {
+  if (!user && (t==='profile' || t==='library' || t==='uploads')) {
+    sl();
+    toast('Login required', true);
+    return;
+  }
+  go(t);
+  cs();
+}
+
+function ea() {
+  document.getElementById('app').classList.add('show');
+  uua();
+  if (user) {
+    document.getElementById('pn').textContent = user.name;
+    document.getElementById('phn').textContent = user.handle;
+    document.getElementById('pba').innerHTML = `<span>${esc(user.name.charAt(0).toUpperCase())}</span>`;
+  }
+  load();
+  document.getElementById('mu').onchange = e => hu('music', e);
+  document.getElementById('pu').onchange = e => hu('pics', e);
+  document.getElementById('vu').onchange = e => hu('video', e);
+  document.getElementById('cu').onchange = hcu;
+  at();
+}
+
+function load() { rh(); ram(); rl(); ru(); us(); upb(); }
+
+function uua() {
+  const a = document.getElementById('ua'), lo = document.getElementById('lo'), li = document.getElementById('li');
+  if (user) {
+    a.innerHTML = `<div class="uc" onclick="go('profile')"><div class="ua">${esc(user.name.charAt(0).toUpperCase())}</div><span>${esc(user.name)}</span></div>`;
+    lo.style.display = 'flex';
+    lo.style.flexDirection = 'column';
+    li.style.display = 'none';
+    document.querySelectorAll('.nl.locked').forEach(x => x.classList.remove('locked'));
+    const plk = document.getElementById('plk'); if (plk) plk.style.display = 'none';
+    const pcn = document.getElementById('pcn'); if (pcn) pcn.style.display = 'block';
+  } else {
+    a.innerHTML = `<button class="lp" onclick="sl()"><i class="fas fa-right-to-bracket"></i> Login</button>`;
+    lo.style.display = 'none';
+    li.style.display = 'flex';
+    li.style.flexDirection = 'column';
+    const plk = document.getElementById('plk'); if (plk) plk.style.display = 'flex';
+    const pcn = document.getElementById('pcn'); if (pcn) pcn.style.display = 'none';
+  }
+}
+
+function upb() {
+  const mb = document.getElementById('mb');
+  if (mb) {
+    const c = gma().reduce((s,a) => s + (a.voice?.length||0) + (a.music?.length||0) + (a.pics?.length||0) + (a.video?.length||0), 0);
+    mb.textContent = c;
+  }
+  const ub = document.getElementById('ub');
+  if (ub) ub.textContent = gma().filter(a => a.published).length;
+}
+
+// -------- NAVIGATION --------
+function go(n) {
+  document.querySelectorAll('.sec').forEach(s => s.classList.remove('active'));
+  document.getElementById('s-'+n)?.classList.add('active');
+  document.querySelectorAll('.nl').forEach(a => a.classList.toggle('active', a.dataset.g === n));
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+  if (n === 'settings') csp();
+  if (n === 'library') rl();
+  if (n === 'home') rh();
+  if (n === 'uploads') ru();
+}
+
+function cs() {
+  document.getElementById('sb').classList.remove('active');
+  document.getElementById('sbb').classList.remove('show');
+  document.body.style.overflow = '';
+}
+function os() {
+  document.getElementById('sb').classList.add('active');
+  document.getElementById('sbb').classList.add('show');
+  document.body.style.overflow = 'hidden';
+}
+document.getElementById('mob').onclick = os;
+document.getElementById('mcb').onclick = cs;
+document.getElementById('sbb').onclick = cs;
+
+// -------- HOME FEED --------
+async function rh() {
+  const g = document.getElementById('hf');
+  const p = anime.filter(a => a.published !== false).sort((a,b) => b.ts - a.ts);
+  if (!p.length) {
+    g.innerHTML = '<div class="le"><i class="fas fa-house"></i><h4>No anime yet</h4><p>Be the first to publish an anime on LumiFrames.</p><button class="bp" onclick="go(\'profile\')"><i class="fas fa-plus"></i> Create Anime</button></div>';
+    return;
+  }
+  g.innerHTML = (await Promise.all(p.map((a,i) => ach(a,i)))).join('');
+}
+
+async function ach(a, i) {
+  const pills = [];
+  if (a.voice?.length) pills.push('<span class="ap"><i class="fas fa-microphone"></i> Voice</span>');
+  if (a.music?.length) pills.push('<span class="ap"><i class="fas fa-music"></i> Music</span>');
+  if (a.pics?.length) pills.push('<span class="ap"><i class="fas fa-image"></i> Pics</span>');
+  if (a.video?.length) pills.push('<span class="ap"><i class="fas fa-film"></i> Video</span>');
+  
+  let cov = '';
+  if (a.cover && a.cover.startsWith('http')) {
+    cov = `<img src="${a.cover}" alt="" onerror="this.src='https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?w=800'">`;
+  } else if (a.cover) {
+    cov = `<img src="${a.cover}" alt="" onerror="this.src='https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?w=800'">`;
+  } else if (a.pics?.length && a.pics[0].url) {
+    cov = `<img src="${a.pics[0].url}" alt="">`;
+  } else {
+    cov = `<img src="https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?w=800" alt="">`;
+  }
+  cov += `<div class="pb"><i class="fas fa-play"></i></div>`;
+  
+  return `<div class="pc" onclick="oad(${a.id})" style="animation-delay:${i*60}ms">
+    <div class="pco">${cov}<span class="tc"><i class="fas fa-${a.ad?'bullhorn':'circle-play'}"></i> ${a.ad?'Ad':'Post'}</span></div>
+    <div class="pbo">
+      <h3 class="pt">${esc(a.title)}</h3>
+      <div class="pm"><span class="sc">${esc(a.studio)}</span>${a.genre?' · '+esc(a.genre):''}${a.year?' · '+esc(a.year):''} · ${ta(a.ts)}</div>
+      <div class="pa">${pills.join('')||'<span class="ap" style="opacity:.5"><i class="fas fa-circle-info"></i> No media</span>'}</div>
+      <div class="pas" onclick="event.stopPropagation()">
+        <button class="pbt ${a.liked_by_me?'liked':''}" onclick="tl(${a.id},this)"><i class="fas fa-heart"></i> ${a.likes||0}</button>
+        <button class="pbt" onclick="tsub(${a.id})"><i class="fas fa-bell"></i> ${a.subscribed_by_me?'On':'Notify'}</button>
+        <button class="pbt" onclick="oad(${a.id})"><i class="fas fa-eye"></i> View</button>
+      </div>
+    </div>
+  </div>`;
+}
+
+// -------- LIKES & SUBSCRIPTIONS --------
+async function tl(id, b) {
+  if (!user) { sl(); return; }
+  const a = anime.find(x => x.id === id);
+  if (!a) return;
+  a.liked_by_me = !a.liked_by_me;
+  a.likes = (a.likes||0) + (a.liked_by_me ? 1 : -1);
+  await saveAnime();
+  b.classList.toggle('liked', a.liked_by_me);
+  b.innerHTML = `<i class="fas fa-heart"></i> ${a.likes}`;
+  us();
+}
+
+async function tsub(id) {
+  if (!user) { sl(); return; }
+  const a = anime.find(x => x.id === id);
+  if (!a) return;
+  a.subscribed_by_me = !a.subscribed_by_me;
+  await saveAnime();
+  toast(a.subscribed_by_me ? 'Subscribed!' : 'Unsubscribed');
+}
+
+// -------- DETAIL VIEW --------
+async function oad(id) {
+  const a = anime.find(x => x.id === id);
+  if (!a) return;
+  let h = '';
+  if (a.video && a.video.length && a.video[0].url) {
+    h = `<div class="fvp"><video src="${a.video[0].url}" controls playsinline autoplay></video></div>`;
+  } else if (a.cover) {
+    h = `<img src="${a.cover}" onerror="this.src='https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?w=800'">`;
+  } else {
+    h = `<img src="https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?w=800">`;
+  }
+  
+  let att = '';
+  for (const v of (a.voice||[])) {
+    att += `<div class="ur"><i class="fas fa-microphone" style="color:var(--p4)"></i><div class="n">${esc(v.name)} (WEBM)</div><button class="ob" onclick="pbid('${v.id}','${esc(v.name)}')">Play</button></div>`;
+  }
+  for (const m of (a.music||[])) {
+    att += `<div class="ur"><i class="fas fa-music" style="color:var(--p5)"></i><div class="n">${esc(m.name)} (${(m.format||'MP3').toUpperCase()})</div><button class="ob" onclick="pbid('${m.id}','${esc(m.name)}')">Play</button></div>`;
+  }
+  for (const p of (a.pics||[])) {
+    att += `<div class="ur"><i class="fas fa-image" style="color:#10b981"></i><div class="n">${esc(p.name)} (${(p.format||'PNG').toUpperCase()})</div><button class="ob" onclick="pbid('${p.id}','${esc(p.name)}')">View</button></div>`;
+  }
+  for (const v of (a.video||[]).slice(1)) {
+    att += `<div class="ur"><i class="fas fa-film" style="color:var(--p1)"></i><div class="n">${esc(v.name)} (MP4)</div><button class="ob" onclick="pbid('${v.id}','${esc(v.name)}')">Watch</button></div>`;
+  }
+  
+  let prs = '';
+  for (const pr of (a.pairs||[])) {
+    let ai = '<i class="fas fa-image" style="color:var(--tm)"></i>';
+    let ri = '<i class="fas fa-image" style="color:var(--tm)"></i>';
+    if (pr.animePicId) {
+      const pic = (a.pics||[]).find(p => p.id === pr.animePicId);
+      if (pic && pic.url) ai = `<img src="${pic.url}">`;
+    }
+    if (pr.realPicId) {
+      const pic = (a.pics||[]).find(p => p.id === pr.realPicId);
+      if (pic && pic.url) ri = `<img src="${pic.url}">`;
+    }
+    prs += `<div class="ppr"><div class="pps"><div class="pl">Anime</div><div class="ibx">${ai}</div><div style="text-align:center;font-weight:600;font-size:.8rem;margin-top:3px">${esc(pr.animeName||'—')}</div></div><div class="pps"><div class="pl">Real</div><div class="ibx">${ri}</div><div style="text-align:center;font-weight:600;font-size:.8rem;margin-top:3px">${esc(pr.realName||'—')}</div></div>${pr.desc?`<div style="grid-column:1/-1;background:var(--bg-s);border:1px solid var(--b);border-radius:7px;padding:6px 8px;font-size:.78rem;margin-top:4px;color:var(--td)">${esc(pr.desc)}</div>`:''}</div>`;
+  }
+  
+  const fmt = d => d ? new Date(d).toLocaleDateString('en-US',{year:'numeric',month:'short',day:'numeric'}) : '—';
+  const dt = `<div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:10px"><div style="background:var(--bg-e);border:1px solid var(--b);border-radius:10px;padding:9px"><div style="font-size:.6rem;color:var(--tm);text-transform:uppercase;letter-spacing:.05em;margin-bottom:3px">Announcement</div><div style="font-weight:700;font-size:.88rem">${fmt(a.announceDate)}</div></div><div style="background:var(--bg-e);border:1px solid var(--b);border-radius:10px;padding:9px"><div style="font-size:.6rem;color:var(--tm);text-transform:uppercase;letter-spacing:.05em;margin-bottom:3px">Release</div><div style="font-weight:700;font-size:.88rem">${fmt(a.releaseDate)}</div></div></div>`;
+  
+  document.getElementById('dct').innerHTML = `
+    <button class="dcl" onclick="cd()"><i class="fas fa-times"></i></button>
+    <div class="dh">${h}</div>
+    <div class="db2">
+      <div class="st2" style="margin-bottom:4px">${esc(a.studio)} · ${esc(a.author)}${a.genre?' · '+esc(a.genre):''}${a.year?' · '+esc(a.year):''}</div>
+      <h1 style="font-family:Cinzel,serif;font-size:1.35rem;margin-bottom:10px;color:#fff">${esc(a.title)}</h1>
+      ${a.description?`<p style="color:var(--td);font-size:.85rem;margin-bottom:10px;line-height:1.6">${esc(a.description)}</p>`:''}
+      ${dt}
+      ${prs?`<div class="dst"><i class="fas fa-users"></i> Character Pairs</div>${prs}`:''}
+      ${att?`<div class="dst"><i class="fas fa-paperclip"></i> Attachments</div><div style="display:flex;flex-direction:column;gap:4px">${att}</div>`:''}
+      <div class="da">
+        <button class="pbt ${a.liked_by_me?'liked':''}" onclick="tl(${a.id},this)"><i class="fas fa-heart"></i> ${a.likes||0}</button>
+        <button class="pbt" onclick="tsub(${a.id})"><i class="fas fa-bell"></i> ${a.subscribed_by_me?'Subscribed':'Subscribe'}</button>
+        <button class="pbt" onclick="cd()"><i class="fas fa-share"></i> Share</button>
+      </div>
+    </div>`;
+  document.getElementById('dov').classList.add('show');
+  document.body.style.overflow = 'hidden';
+}
+
+function cd() { document.getElementById('dov').classList.remove('show'); document.body.style.overflow = ''; }
+
+// -------- PREVIEW MODAL --------
+async function pbid(id, n) {
+  let url = null;
+  for (const a of anime) {
+    for (const type of ['voice','music','pics','video']) {
+      const item = (a[type] || []).find(m => m.id === id);
+      if (item && item.url) { url = item.url; break; }
+    }
+    if (url) break;
+  }
+  if (!url) { toast('File not found', true); return; }
+  const ext = url.split('.').pop().toLowerCase();
+  let h = '';
+  if (['mp3','wav','ogg'].includes(ext)) {
+    h = `<audio controls autoplay src="${url}"></audio>`;
+  } else if (['mp4','webm'].includes(ext)) {
+    h = `<video controls autoplay src="${url}" playsinline></video>`;
+  } else if (['jpg','jpeg','png','gif','webp'].includes(ext)) {
+    h = `<img src="${url}" style="max-height:50vh;width:100%;object-fit:contain">`;
+  } else {
+    h = `<a href="${url}" target="_blank">Download</a>`;
+  }
+  document.getElementById('prt').textContent = n;
+  document.getElementById('prb').innerHTML = `<div class="pm2">${h}</div>`;
+  document.getElementById('prm').classList.add('show');
+}
+
+function cpr() { document.getElementById('prm').classList.remove('show'); }
+
+// -------- PROFILE / EDIT --------
+function ram() {
+  if (!user) return;
+  const l = document.getElementById('alu');
+  const m = gma();
+  if (!m.length) {
+    l.innerHTML = '<p style="color:var(--tm);font-size:.8rem;width:100%;text-align:center;padding:10px">No anime yet — click "New Anime" to start.</p>';
+    document.getElementById('cab').classList.remove('show');
+    cid = null;
+    return;
+  }
+  l.innerHTML = m.map(a => `<div class="ac ${a.id===cid?'active':''}" onclick="sel(${a.id})">${esc(a.title||'Untitled')}<span class="d" onclick="event.stopPropagation();da(${a.id})" title="Delete"><i class="fas fa-times"></i></span></div>`).join('');
+  if (cid && m.find(x => x.id === cid)) lca();
+  else sel(m[0].id);
+}
+
+async function cna() {
+  if (!user) { sl(); return; }
+  const n = { id: Date.now(), user_id: user.id, studio: user.name+' Studio', author: user.handle, title: 'New Anime '+(gma().length+1), cover: '', genre: '', year: ''+new Date().getFullYear(), description: '', voice: [], music: [], pics: [], video: [], pairs: [], announceDate: '', releaseDate: '', likes: 0, liked_by_me: 0, subscribed_by_me: 0, ts: Date.now(), ad: 0, published: 0 };
+  anime.unshift(n);
+  await saveAnime();
+  cid = n.id;
+  ram();
+  toast('New anime created');
+}
+
+function sel(id) { cid = id; ram(); lca(); upb(); }
+
+async function da(id) {
+  if (!confirm('Delete this anime and all its media?')) return;
+  const a = anime.find(x => x.id === id);
+  if (a) {
+    const ids = [...(a.voice||[]).map(m=>m.id), ...(a.music||[]).map(m=>m.id), ...(a.pics||[]).map(m=>m.id), ...(a.video||[]).map(m=>m.id)];
+    for (const fileId of ids) {
+      try { await deleteFileFromBlob(fileId); } catch(e) {}
+    }
+  }
+  anime = anime.filter(x => x.id !== id);
+  await saveAnime();
+  if (cid === id) cid = null;
+  ram(); rh(); rl(); us(); upb();
+  toast('Deleted');
+}
+
+function lca() {
+  const a = gca();
+  if (!a) { document.getElementById('cab').classList.remove('show'); return; }
+  document.getElementById('cab').classList.add('show');
+  document.getElementById('ati').value = a.title || '';
+  document.getElementById('asi').value = a.studio || '';
+  document.getElementById('aai').value = a.author || '';
+  document.getElementById('agi').value = a.genre || '';
+  document.getElementById('ayi').value = a.year || '';
+  document.getElementById('adi').value = a.description || '';
+  document.getElementById('ad').value = a.announceDate || '';
+  document.getElementById('rd').value = a.releaseDate || '';
+  ucp(a); rml(); rpu();
+}
+
+async function uf(f, v) {
+  const a = gca(); if (!a) return;
+  a[f] = v;
+  await saveAnime();
+  if (f === 'title') ram();
+  if (f === 'title' || f === 'studio' || f === 'cover') upb();
+}
+
+async function ucp(a) {
+  const b = document.getElementById('cpv');
+  if (a.cover) {
+    b.innerHTML = `<img src="${a.cover}" onerror="this.style.display='none';this.parentNode.innerHTML='<div class=&quot;ph&quot;><i class=&quot;fas fa-image&quot;></i><span>No cover</span></div>'">`;
+  } else if (a.video?.length && a.video[0].url) {
+    b.innerHTML = `<video src="${a.video[0].url}" muted></video>`;
+  } else {
+    b.innerHTML = `<div class="ph"><i class="fas fa-image"></i><span>No cover yet — upload one!</span></div>`;
+  }
+}
+
+async function hcu(e) {
+  const a = gca(); if (!a) { toast('Select anime first', true); e.target.value = ''; return; }
+  const f = e.target.files[0]; if (!f) return;
+  if (f.size > 8*1024*1024) { toast('Cover too large (max 8MB)', true); e.target.value = ''; return; }
+  ss2('ps');
+  try {
+    const uploaded = await uploadFileToBlob(f, 'pics', { title: 'Cover' });
+    a.cover = uploaded.url;
+    await saveAnime();
+    ucp(a);
+    toast('Cover updated ✓');
+  } catch(err) { toast('Cover failed', true); }
+  hs('ps');
+  e.target.value = '';
+}
+
+async function cc() {
+  const a = gca(); if (!a) return;
+  a.cover = '';
+  await saveAnime();
+  ucp(a);
+  toast('Cover cleared');
+}
+
+// -------- MEDIA UPLOADS --------
+async function hu(k, e) {
+  const a = gca();
+  if (!a) { toast('Select anime first', true); e.target.value = ''; return; }
+  const sid = k === 'music' ? 'ms' : k === 'pics' ? 'ps' : 'vs2';
+  ss2(sid);
+  try {
+    const files = Array.from(e.target.files);
+    for (const f of files) {
+      if (k === 'music' && f.size > 20*1024*1024) { toast('Music too large (max 20MB)', true); continue; }
+      if (k === 'pics' && f.size > 8*1024*1024) { toast('Pic too large (max 8MB)', true); continue; }
+      if (k === 'video' && f.size > 50*1024*1024) { toast('Video too large (max 50MB)', true); continue; }
+      const uploaded = await uploadFileToBlob(f, k, { title: f.name });
+      const mediaObj = { id: uploaded.id, name: f.name, url: uploaded.url, sizeBytes: f.size, format: f.name.split('.').pop() || 'bin', kind: k, type: f.type };
+      a[k].push(mediaObj);
+    }
+    await saveAnime();
+    rml(); rl(); us(); upb(); ucp(a);
+    toast(`${files.length} file(s) uploaded ✓`);
+  } catch(err) { console.error(err); toast('Upload failed', true); }
+  hs(sid);
+  e.target.value = '';
+}
+
+// -------- MEDIA LIST --------
+async function rml() {
+  const a = gca(); if (!a) return;
+  // Voice
+  const vl = document.getElementById('vl');
+  vl.innerHTML = (a.voice||[]).map((v, i) => 
+    `<div class="ur"><i class="fas fa-microphone" style="color:var(--p4)"></i><div class="n">${esc(v.name)} (WEBM)</div><button class="ob" onclick="pbid('${v.id}','${esc(v.name)}')">View</button><button class="db" onclick="rm('voice',${i})">×</button></div>`
+  ).join('');
+  
+  const ml = document.getElementById('ml');
+  ml.innerHTML = (a.music||[]).map((m, i) => 
+    `<div class="ur"><i class="fas fa-music" style="color:var(--p5)"></i><div class="n">${esc(m.name)} (${(m.format||'MP3').toUpperCase()})</div><button class="ob" onclick="pbid('${m.id}','${esc(m.name)}')">View</button><button class="db" onclick="rm('music',${i})">×</button></div>`
+  ).join('');
+  
+  const pl = document.getElementById('pl');
+  pl.innerHTML = (a.pics||[]).map((p, i) => 
+    `<div class="ur"><i class="fas fa-image" style="color:#10b981"></i><div class="n">${esc(p.name)} (${(p.format||'PNG').toUpperCase()})</div><button class="ob" onclick="pbid('${p.id}','${esc(p.name)}')">View</button><button class="db" onclick="rm('pics',${i})">×</button></div>`
+  ).join('');
+  
+  const vl2 = document.getElementById('vl2');
+  vl2.innerHTML = (a.video||[]).map((v, i) => 
+    `<div class="ur"><i class="fas fa-film" style="color:var(--p1)"></i><div class="n">${esc(v.name)} (MP4)</div><button class="ob" onclick="pbid('${v.id}','${esc(v.name)}')">Watch</button><button class="db" onclick="rm('video',${i})">×</button></div>`
+  ).join('');
+}
+
+async function rm(k, i) {
+  const a = gca(); if (!a || !confirm('Remove this item?')) return;
+  const it = a[k][i];
+  if (it && it.id) {
+    try { await deleteFileFromBlob(it.id); } catch(e) {}
+  }
+  a[k].splice(i, 1);
+  await saveAnime();
+  rml(); rl(); us(); upb(); ucp(a);
+  toast('Removed');
+}
+
+// -------- CHARACTER PAIRS --------
+function rpu() {
+  const a = gca();
+  const c = document.getElementById('prs');
+  c.innerHTML = '';
+  if (!a?.pairs) return;
+  a.pairs.forEach((pr, i) => {
+    const r = document.createElement('div');
+    r.className = 'pr';
+    r.innerHTML = `
+      <div class="psi" onclick="ppi(${i},'anime')" title="Pick anime pic">${pr.animePicId ? '<i class="fas fa-check" style="color:var(--p4)"></i>' : '<i class="fas fa-image"></i>'}</div>
+      <input class="pn" data-s="animeName" placeholder="Anime character" value="${esc(pr.animeName||'')}" oninput="updatePairField(${i},'animeName',this.value)"/>
+      <div class="psi" onclick="ppi(${i},'real')" title="Pick real pic">${pr.realPicId ? '<i class="fas fa-check" style="color:var(--p4)"></i>' : '<i class="fas fa-image"></i>'}</div>
+      <input class="pn" data-s="realName" placeholder="Real character" value="${esc(pr.realName||'')}" oninput="updatePairField(${i},'realName',this.value)"/>
+      <textarea class="pd" data-s="desc" placeholder="Describe the relationship…" oninput="updatePairField(${i},'desc',this.value)">${esc(pr.desc||'')}</textarea>
+      <button class="prm" onclick="rpr(${i})" title="Remove pair"><i class="fas fa-times"></i></button>`;
+    c.appendChild(r);
+  });
+}
+
+async function updatePairField(i, field, value) {
+  const a = gca(); if (!a) return;
+  a.pairs[i][field] = value;
+  await saveAnime();
+}
+
+async function apr() {
+  const a = gca();
+  if (!a) { toast('Select anime first', true); return; }
+  a.pairs.push({ animeName: '', animePicId: null, realName: '', realPicId: null, desc: '' });
+  await saveAnime();
+  rpu();
+}
+
+async function rpr(i) {
+  const a = gca(); if (!a) return;
+  a.pairs.splice(i, 1);
+  await saveAnime();
+  rpu();
+}
+
+async function ppi(i, s) {
+  const a = gca(); if (!a) return;
+  const inp = document.createElement('input');
+  inp.type = 'file';
+  inp.accept = 'image/png,image/jpeg,image/webp';
+  inp.onchange = async e => {
+    const f = e.target.files[0]; if (!f) return;
+    if (f.size > 8*1024*1024) { toast('Too large (max 8MB)', true); return; }
+    ss2('ps');
+    try {
+      const uploaded = await uploadFileToBlob(f, 'pics', { title: 'pair' });
+      if (s === 'anime') a.pairs[i].animePicId = uploaded.id;
+      else a.pairs[i].realPicId = uploaded.id;
+      a.pics.push({ id: uploaded.id, name: 'pair_'+s, url: uploaded.url, sizeBytes: f.size, format: f.name.split('.').pop() || 'png', kind: 'pics' });
+      await saveAnime();
+      rpu(); rml(); rl(); upb();
+      toast('Pair image added ✓');
+    } catch(err) { toast('Failed', true); }
+    hs('ps');
+  };
+  inp.click();
+}
+
+// -------- PUBLISH --------
+async function pub() {
+  const a = gca();
+  if (!a) { toast('Select anime first', true); return; }
+  if (!a.title?.trim()) { toast('Add a title first', true); return; }
+  a.ts = Date.now();
+  a.published = 1;
+  if (!a.studio) a.studio = user.name + ' Studio';
+  if (!a.author) a.author = user.handle;
+  await saveAnime();
+  rh(); ru(); us(); upb();
+  toast('✓ Published to Home Feed!');
+  setTimeout(() => go('home'), 600);
+}
+
+// -------- LIBRARY --------
+function slt(t) {
+  ltab = t;
+  document.querySelectorAll('.lt').forEach(x => x.classList.toggle('active', x.dataset.t === t));
+  rl();
+}
+
+async function rl() {
+  const g = document.getElementById('lgr');
+  if (!user) {
+    g.innerHTML = '<div class="le"><i class="fas fa-lock"></i><h4>Login required</h4><p>Sign in to view your library.</p><button class="bp" onclick="sl()"><i class="fas fa-right-to-bracket"></i> Login</button></div>';
+    return;
+  }
+  const allFiles = await getAllFiles();
+  let media = allFiles;
+  if (ltab !== 'all') media = media.filter(f => f.type === ltab);
+  if (!media.length) {
+    const msg = ltab === 'all' ? 'No media uploaded yet' : 'No '+ltab+' uploaded yet';
+    g.innerHTML = `<div class="le"><i class="fas fa-folder-open"></i><h4>Empty</h4><p>${msg}</p><button class="bp" onclick="go('profile')"><i class="fas fa-plus"></i> Upload Media</button></div>`;
+    return;
+  }
+  g.innerHTML = media.map(f => {
+    const icon = f.type === 'video' ? 'fa-film' : f.type === 'music' ? 'fa-music' : f.type === 'voice' ? 'fa-microphone' : 'fa-image';
+    const mediaHtml = f.type === 'video' ? `<video src="${f.url}" muted></video>` :
+                     f.type === 'music' ? `<i class="fas fa-music" style="font-size:1.6rem;color:var(--p2)"></i>` :
+                     f.type === 'voice' ? `<i class="fas fa-microphone" style="font-size:1.6rem;color:var(--p4)"></i>` :
+                     `<img src="${f.url}">`;
+    return `<div class="li" onclick="pbid('${f.id}','${f.title}')">
+              <div class="lth">${mediaHtml}</div>
+              <div class="lin"><h5>${esc(f.title)}</h5><span>${f.type}</span></div>
+            </div>`;
+  }).join('');
+}
+
+// -------- UPLOADS --------
+async function ru() {
+  const g = document.getElementById('upg');
+  if (!g) return;
+  if (!user) {
+    g.innerHTML = '<div class="le"><i class="fas fa-lock"></i><h4>Login required</h4><p>Sign in to manage your uploads.</p></div>';
+    return;
+  }
+  const published = gma().filter(a => a.published).sort((a,b) => b.ts - a.ts);
+  if (!published.length) {
+    g.innerHTML = '<div class="le"><i class="fas fa-cloud-arrow-up"></i><h4>No uploads yet</h4><p>Publish an anime from My Studio to see it here.</p><button class="bp" style="width:auto;margin-top:10px" onclick="go(\'profile\')"><i class="fas fa-plus"></i> Go to Studio</button></div>';
+    return;
+  }
+  const cards = await Promise.all(published.map(async (a, i) => {
+    let thumb = a.cover ? `<img src="${a.cover}" alt="">` : `<img src="https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?w=800" alt="">`;
+    return `<div class="pc" style="animation-delay:${i*50}ms">
+      <div class="pco" onclick="oad(${a.id})">${thumb}<span class="tc"><i class="fas fa-check"></i> Published</span><div class="pb"><i class="fas fa-play"></i></div></div>
+      <div class="pbo">
+        <h3 class="pt">${esc(a.title)}</h3>
+        <div class="pm"><span class="sc">${esc(a.studio)}</span> · ${ta(a.ts)}</div>
+        <div class="pas">
+          <button class="pbt" onclick="oad(${a.id})"><i class="fas fa-eye"></i> Preview</button>
+          <button class="pbt" onclick="sel(${a.id});go('profile')"><i class="fas fa-pen"></i> Edit</button>
+        </div>
+      </div>
+    </div>`;
+  }));
+  g.innerHTML = cards.join('');
+}
+
+// -------- STATS --------
+function us() {
+  if (!user) return;
+  const m = gma();
+  document.getElementById('sa').textContent = m.length;
+  document.getElementById('sl').textContent = m.reduce((s,a) => s + (a.likes||0), 0);
+  let c = 0;
+  m.forEach(a => { c += (a.voice?.length||0) + (a.music?.length||0) + (a.pics?.length||0) + (a.video?.length||0); });
+  document.getElementById('sm').textContent = c;
+}
+
+// -------- VOICE RECORDING --------
+function ovm() {
+  if (!user) { sl(); return; }
+  if (!gca()) { toast('Select anime first', true); return; }
+  document.getElementById('vm').classList.add('show');
+  document.getElementById('vt').value = '';
+  document.getElementById('vc').value = '';
+  document.getElementById('rti').textContent = '00:00';
+  document.getElementById('raBox').classList.remove('recording');
+  rs = 0;
+}
+
+function cvm() {
+  if (rec) tr();
+  document.getElementById('vm').classList.remove('show');
+  document.getElementById('raBox').classList.remove('recording');
+}
+
+async function tr() {
+  if (rec) {
+    rec = 0;
+    try { mr.stop(); } catch(e) {}
+    document.getElementById('rbtn').classList.remove('recording');
+    document.getElementById('rbtn').innerHTML = '<i class="fas fa-microphone"></i>';
+    document.getElementById('raBox').classList.remove('recording');
+    clearInterval(rti);
+    return;
+  }
+  try {
+    const s = await navigator.mediaDevices.getUserMedia({ audio: true });
+    mr = new MediaRecorder(s);
+    rc = [];
+    mr.ondataavailable = e => { if (e.data.size) rc.push(e.data); };
+    mr.onstop = async () => {
+      const blob = new Blob(rc, { type: mr.mimeType || 'audio/webm' });
+      const a = gca(); if (!a) return;
+      const name = document.getElementById('vt').value.trim() || 'Voice '+(a.voice.length+1);
+      const uploaded = await uploadFileToBlob(
+        new File([blob], name+'.webm', { type: 'audio/webm' }),
+        'voice',
+        { title: name }
+      );
+      const m = Math.floor(rs/60), sec = rs%60;
+      a.voice.push({
+        id: uploaded.id,
+        name: name,
+        url: uploaded.url,
+        duration: `${m}:${sec.toString().padStart(2,'0')}`,
+        sizeBytes: blob.size,
+        format: 'webm',
+        kind: 'voice'
+      });
+      await saveAnime();
+      rml(); rl(); us(); upb();
+      toast('Voice saved ✓');
+      s.getTracks().forEach(t => t.stop());
+    };
+    mr.start();
+    rec = 1;
+    rs = 0;
+    rti = setInterval(() => {
+      rs++;
+      const m = Math.floor(rs/60), sec = rs%60;
+      document.getElementById('rti').textContent = `${m.toString().padStart(2,'0')}:${sec.toString().padStart(2,'0')}`;
+    }, 1000);
+    document.getElementById('rbtn').classList.add('recording');
+    document.getElementById('rbtn').innerHTML = '<i class="fas fa-stop"></i>';
+    document.getElementById('raBox').classList.add('recording');
+  } catch(err) { console.error(err); toast('Microphone access denied', true); }
+}
+
+function sv() {
+  if (rec) { tr(); setTimeout(cvm, 500); }
+  else cvm();
+}
+
+// -------- SETTINGS --------
+function osp(n) {
+  document.querySelectorAll('.spn2').forEach(p => p.classList.remove('show'));
+  document.getElementById('p-'+n)?.classList.add('show');
+  if (n === 'seemore') rp();
+  if (n === 'cache') vc();
+}
+
+function csp() { document.querySelectorAll('.spn2').forEach(p => p.classList.remove('show')); }
+
+function at() {
+  document.getElementById('taa')?.classList.toggle('on', set.allowAds);
+  document.getElementById('tad')?.classList.toggle('on', set.ads);
+}
+
+function ts(k) {
+  set[k] = !set[k];
+  localStorage.setItem('lf_set', JSON.stringify(set));
+  at();
+  toast(k === 'ads' ? (set.ads ? 'Ads on' : 'Ads off') : (set.allowAds ? 'Ads allowed' : 'Ads blocked'));
+}
+
+function sr() {
+  if (!document.getElementById('rt').value.trim()) { toast('Write something', true); return; }
+  toast('Report submitted (demo)');
+  document.getElementById('rt').value = '';
+  csp();
+}
+
+function sfb() {
+  if (!document.getElementById('fb').value.trim()) { toast('Write something', true); return; }
+  toast('Feedback sent (demo)');
+  document.getElementById('fb').value = '';
+  csp();
+}
+
+function rp() {
+  const g = document.getElementById('pgr');
+  const d = [
+    {t:'Attack on Titan', s:'Manga', i:'https://images.unsplash.com/photo-1578662996442-48f60103fc96?w=400', l:'https://www.crunchyroll.com'},
+    {t:'Demon Slayer', s:'Anime', i:'https://images.unsplash.com/photo-1613376023730-0d4f8e5b0e8e?w=400', l:'https://www.crunchyroll.com'},
+    {t:'Jujutsu Kaisen', s:'Manga', i:'https://images.unsplash.com/photo-1611162617474-5b21e764f981?w=400', l:'https://www.viz.com'},
+    {t:'Chainsaw Man', s:'Anime', i:'https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?w=400', l:'https://www.crunchyroll.com'},
+    {t:'One Piece', s:'Manga', i:'https://images.unsplash.com/photo-1579546929518-9e396f3cc809?w=400', l:'https://www.viz.com'},
+    {t:'Spy × Family', s:'Anime', i:'https://images.unsplash.com/photo-1614741118887-7a4ee193a5fa?w=400', l:'https://www.crunchyroll.com'}
+  ];
+  g.innerHTML = d.map(x => `<div class="pc2" onclick="window.open('${x.l}','_blank','noopener')"><img src="${x.i}" alt="${esc(x.t)}" onerror="this.src='https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?w=400'"/><div class="pi2"><strong>${esc(x.t)}</strong><span>${esc(x.s)}</span></div></div>`).join('');
+}
+
+async function vc() {
+  const i = document.getElementById('cii');
+  try {
+    const data = await apiFetch('/files');
+    const files = data.files || [];
+    let totalSize = 0;
+    for (const f of files) totalSize += f.size || 0;
+    i.innerHTML = `<strong>Total Files:</strong> ${files.length}<br><strong>Total Storage:</strong> ${formatBytes(totalSize)}<br><strong>Anime:</strong> ${anime.length}<br><span style="font-size:.72rem;color:var(--tm);display:block;margin-top:6px">All data stored in Vercel Blob (global).</span>`;
+  } catch(e) {
+    i.textContent = 'Could not read storage info';
+  }
+}
+
+async function cad() {
+  if (!confirm('Clear ALL data? This cannot be undone.')) return;
+  if (!confirm('Really sure? All your anime & media will be lost.')) return;
+  try {
+    // Delete all anime
+    for (const a of anime) {
+      const ids = [...(a.voice||[]).map(m=>m.id), ...(a.music||[]).map(m=>m.id), ...(a.pics||[]).map(m=>m.id), ...(a.video||[]).map(m=>m.id)];
+      for (const fileId of ids) {
+        try { await deleteFileFromBlob(fileId); } catch(e) {}
+      }
+    }
+    anime = [];
+    await saveAnime();
+    toast('All data cleared ✓');
+    rh(); ram(); rl(); us(); upb(); vc();
+  } catch(e) { toast('Clear failed', true); }
+}
+
+function ste() {
+  const n = document.getElementById('tn').value.trim();
+  const e = document.getElementById('te').value.trim();
+  const m = document.getElementById('tm').value.trim();
+  if (!n || !e || !m) { toast('Fill all fields', true); return; }
+  if (!e.includes('@')) { toast('Invalid email', true); return; }
+  window.open(`mailto:team@lumiframes.demo?subject=${encodeURIComponent('LumiFrames from '+n)}&body=${encodeURIComponent('From: '+n+' <'+e+'>\n\n'+m)}`, '_blank');
+  toast('Opening email client…');
+}
+
+// -------- INIT --------
+async function init() {
+  user = JSON.parse(localStorage.getItem('lf_user')) || null;
+  set = JSON.parse(localStorage.getItem('lf_set')) || { allowAds: true, ads: true };
+  await loadAnime();
+  setTimeout(() => {
+    document.getElementById('splash').classList.add('hide');
+    setTimeout(() => {
+      document.getElementById('splash').style.display = 'none';
+      if (user) ea(); else document.getElementById('login').classList.add('show');
+    }, 700);
+  }, 2800);
+}
+
+// Keyboard: ESC closes overlays
+document.addEventListener('keydown', e => {
+  if (e.key === 'Escape') { cd(); cpr(); cvm(); csp(); cs(); }
+});
+
+window.addEventListener('load', init);
+</script>
+</body>
+</html>
