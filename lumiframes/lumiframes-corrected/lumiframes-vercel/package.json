@@ -1,0 +1,16 @@
+{
+  "name": "lumiframes-studios",
+  "version": "2.0.0",
+  "private": true,
+  "description": "LumiFrames Studios – Anime advertisement platform with Vercel Blob storage",
+  "scripts": {
+    "dev": "vercel dev",
+    "deploy": "vercel --prod"
+  },
+  "dependencies": {
+    "@vercel/blob": "^2.8.0"
+  },
+  "engines": {
+    "node": ">=18"
+  }
+}
